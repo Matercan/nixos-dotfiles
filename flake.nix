@@ -35,8 +35,8 @@
 	   specialArgs = { inherit honkai-railway-grub-theme; };
 	   modules = [
 	      ./configuration.nix
+	      ./pkgs/neovim.nix
 	      nvf.nixosModules.default
-	      ./neovim.nix
 	      home-manager.nixosModules.home-manager
 	      {
 		  home-manager = {

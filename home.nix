@@ -16,7 +16,7 @@
     ]; 
 
     imports = [
-        ./zsh.nix
+        ./pkgs/zsh.nix
     ];
 
     gtk = {

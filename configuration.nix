@@ -3,7 +3,7 @@
 {
     imports =
     [
-        ./git.nix
+        ./pkgs/git.nix
         ./hardware-configuration.nix
         honkai-railway-grub-theme.nixosModules.x86_64-linux.default
     ];
