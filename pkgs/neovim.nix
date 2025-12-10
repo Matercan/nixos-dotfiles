@@ -17,7 +17,7 @@ in
             };
             
             vim.options = {
-                shell = "/usr/bin/zsh";
+                shell = "/run/current-system/sw/bin/zsh";
                 shellcmdflag = "-c";
                 termguicolors = true;
                 encoding = "utf-8";

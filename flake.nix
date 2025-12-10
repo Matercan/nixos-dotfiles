@@ -30,7 +30,7 @@
         };
     };
 
-    outputs = { nixpkgs, home-manager, honkai-railway-grub-theme, zen-browser,  nvf, ... }: {
+    outputs = { nixpkgs, home-manager, honkai-railway-grub-theme, zen-browser, spicetify-nix,  nvf, ... }: {
         nixosConfigurations.mangowc-btw = nixpkgs.lib.nixosSystem {
            system = "x86_64-linux";
            specialArgs = { inherit honkai-railway-grub-theme; };
@@ -47,7 +47,7 @@
                         useUserPackages = true;
                         users.matercan = import ./home.nix;
                         backupFileExtension = "backup";
-                        extraSpecialArgs = { inherit zen-browser; };
+                        extraSpecialArgs = { inherit zen-browser spicetify-nix; };
                     };
                 }
             ];

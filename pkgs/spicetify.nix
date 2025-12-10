@@ -1,16 +1,16 @@
-{ pkgs, spicetify-nix, ...}:
+{ pkgs, spicetify-nix, ... }:
 let
-    spicePkgs = inputs.spicetify-nix.legeacyPackages.${pkgs.stdenv.system};
+    spicePkgs = spicetify-nix.packages;
 in
 {
     programs.spicetify = {
         enable = true;
-        enabledExtentions = with spicePkgs.extensions; [
+        enabledExtensions = with spicePkgs.extensions; [
             adblockify
             hidePodcasts
             shuffle
         ];
         theme = spicePkgs.themes.catppuccin;
         colorScheme = "macchiato";
-    }
+    };
 }
