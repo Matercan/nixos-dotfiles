@@ -13,6 +13,7 @@
         obs-studio
         wl-clipboard
         ripgrep
+        spotify
     ]; 
 
     imports = [
@@ -31,5 +32,4 @@
     home.file.".config/hypr".source = ./config/hypr;
     home.file.".config/foot".source = ./config/foot;
     home.file.".config/fuzzel".source = ./config/fuzzel;
-    home.file.".config/nvim".source = ./config/nvim;
 }

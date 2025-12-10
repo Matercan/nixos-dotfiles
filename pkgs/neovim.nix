@@ -1,4 +1,4 @@
-{ config, pkgs, nvf, ... }: 
+{ config, pkgs, nvf, home-manager,  ... }: 
 let 
     hl = "vim.api.nvim_set_hl";
 in
@@ -65,13 +65,6 @@ in
                 indent.enable = true;
             };
 
-            vim.luaConfigRC.theme = /* lua */ ''
-                ${hl}(0, "Normal", { bg = "none" })  
-                ${hl}(0, "TelescopeNormal", {bg = "none" })
-                ${hl}(0, "TelescopeBorder", {bg = "none" })
-
-            '';
-
             vim.luaConfigRC.replace = /* lua */ ''
                 vim.keymap.set('n', '<leader>rh', function()
                     vim.ui.input({ prompt = 'Find: ' }, function(find_pattern)
@@ -114,8 +107,20 @@ in
                         term_colors = true;
                     };
 
-                    after = ''
+                    after = /* lua */ ''
                         vim.cmd("Catppuccin macchiato")
+                        ${hl}(0, "Normal", { bg = "none" })  
+                        ${hl}(0, "TelescopeNormal", {bg = "none" })
+                        ${hl}(0, "TelescopeBorder", {bg = "none", fg = "#fab387" })
+
+                        ${hl}(0, "TelescopePromptNormal", { bg = "none" })
+                        ${hl}(0, "TelescopePromptBorder", { bg = "none", fg = "#fab387" })
+                        ${hl}(0, "TelescopePromptTitle", { bg = "none", fg = "#fab387" })
+                        ${hl}(0, "TelescopeResultsNormal", { bg = "none" })
+                        ${hl}(0, "TelescopeResultsBorder", { bg = "none", fg = "#fab387" })
+                        ${hl}(0, "TelescopePreviewNormal", { bg = "none" })
+                        ${hl}(0, "TelescopePreviewBorder", { bg = "none", fg = "#fab387" }) 
+
                         ${hl}(0, "CursorLineNr", {
                             fg = "#fab387",
                             bold = true,

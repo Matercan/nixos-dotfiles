@@ -35,11 +35,12 @@
     };
 
 
-
     networking.hostName = "mangowc-btw";
     networking.networkmanager.enable = true;
 
     time.timeZone = "Europe/Amsterdam";
+
+    nixpkgs.config.allowUnfree = true; 
 
     i18n.defaultLocale = "en_GB.UTF-8";
     console = {
@@ -59,9 +60,6 @@
         shell = pkgs.zsh;
         isNormalUser = true;
         extraGroups = [ "wheel" ]; 
-        packages = with pkgs; [
-          tree
-        ];
     };
 
     programs.firefox.enable = true;
