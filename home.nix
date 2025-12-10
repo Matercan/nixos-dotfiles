@@ -1,5 +1,7 @@
-{ config, pkgs, zen-browser, ... }:
-
+{ config, pkgs, zen-browser, spicetify-nix, ... }:
+let 
+    spicetify = spicetify-nix.lib.mkSpicetify pkgs {};
+in
 {
     home.username = "matercan";
     home.homeDirectory = "/home/matercan";
@@ -13,11 +15,12 @@
         obs-studio
         wl-clipboard
         ripgrep
-        spotify
     ]; 
 
     imports = [
+        spicetify-nix.homeManagerModules.spicetify
         ./pkgs/zsh.nix
+        ./pkgs/spicetify.nix
     ];
 
     gtk = {

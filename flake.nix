@@ -37,8 +37,7 @@
            modules = [
                 ./configuration.nix
                 ./pkgs/neovim.nix
-                ./pkgs/spicetify.nix
-                 
+                
                 nvf.nixosModules.default
                 home-manager.nixosModules.home-manager
                 {
@@ -51,6 +50,7 @@
                     };
                 }
             ];
+            
         };
     };
 }
