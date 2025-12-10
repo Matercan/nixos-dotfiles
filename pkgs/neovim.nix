@@ -1,4 +1,7 @@
 { config, pkgs, nvf, ... }: 
+let 
+    hl = "vim.api.nvim_set_hl";
+in
 {
     programs.nvf = {
         enable = true;
@@ -63,7 +66,9 @@
             };
 
             vim.luaConfigRC.theme = /* lua */ ''
-                vim.api.nvim_set_hl(0, "Normal", { bg = "none" })  
+                ${hl}(0, "Normal", { bg = "none" })  
+                ${hl}(0, "TelescopeNormal", {bg = "none" })
+                ${hl}(0, "TelescopeBorder", {bg = "none" })
 
             '';
 
@@ -111,7 +116,7 @@
 
                     after = ''
                         vim.cmd("Catppuccin macchiato")
-                        vim.api.nvim_set_hl(0, "CursorLineNr", {
+                        ${hl}(0, "CursorLineNr", {
                             fg = "#fab387",
                             bold = true,
                         })
