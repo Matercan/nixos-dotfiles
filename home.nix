@@ -15,6 +15,7 @@ in
         obs-studio
         wl-clipboard
         ripgrep
+        equibop
     ]; 
 
     imports = [
@@ -35,4 +36,6 @@ in
     home.file.".config/hypr".source = ./config/hypr;
     home.file.".config/foot".source = ./config/foot;
     home.file.".config/fuzzel".source = ./config/fuzzel;
+    home.file.".config/equibop/themes".source = ./config/equibop/themes;
+    home.file.".config/equibop/settings".source = ./config/equibop/settings;
 }
