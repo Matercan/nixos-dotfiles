@@ -35,7 +35,7 @@
         };
     };
 
-    outputs = { nixpkgs, home-manager, honkai-railway-grub-theme, zen-browser, spicetify-nix,  nvf, ... }: {
+    outputs = { nixpkgs, home-manager, honkai-railway-grub-theme, zen-browser, spicetify-nix, telescope-cmdline-nvim, nvf, ... }: {
         nixosConfigurations.mangowc-btw = nixpkgs.lib.nixosSystem {
            system = "x86_64-linux";
            specialArgs = { inherit honkai-railway-grub-theme telescope-cmdline-nvim; };

@@ -1,6 +1,12 @@
-{ config, pkgs, nvf, home-manager,  ... }: 
+{ config, pkgs, nvf, telescope-cmdline-nvim, ... }: 
 let 
     hl = "vim.api.nvim_set_hl";
+
+    cmdline-from-source = pkgs.vimUtils.buildVimPlugin {
+        name = "telescope-cmdline-nvim";
+        src = telescope-cmdline-nvim;
+        doCheck = false;
+    };
 in
 {
     programs.nvf = {
@@ -48,9 +54,6 @@ in
                 undofile = true;
                 undolevels = 100000;
                 undoreload = 100000;
-
-                foldmethod = "expr";
-                foldexpr = "nvim_treesitter#expr()";
             };
 
 
@@ -91,6 +94,14 @@ in
                 end, { desc = 'Find and Replace (File)' })
             '';
 
+            vim.languages = {
+                nix.enable = true;
+                rust.enable = true;
+                clang.enable = true;
+                bash.enable = true;
+                csharp.enable = true;
+            };
+
             vim.keymaps = [
                 {
                     key = "<leader>e";
@@ -109,7 +120,7 @@ in
             
 
             vim.extraPlugins = {
-
+                telescope-cmdline-nvim.package = cmdline-from-source;
             };
 
             vim.lazy.plugins = {
@@ -132,15 +143,15 @@ in
 
                         ${hl}(0, "Normal", { bg = "none" })  
                         ${hl}(0, "TelescopeNormal", {bg = "none" })
-                        ${hl}(0, "TelescopeBorder", {bg = "none", fg = "#6F7295" })
+                        ${hl}(0, "TelescopeBorder", {bg = "none", fg = "#5C7CB0" })
 
                         ${hl}(0, "TelescopePromptNormal", { bg = "none" })
-                        ${hl}(0, "TelescopePromptBorder", { bg = "none", fg = "#6F7295" })
-                        ${hl}(0, "TelescopePromptTitle", { bg = "none", fg = "#6F7295" })
+                        ${hl}(0, "TelescopePromptBorder", { bg = "none", fg = "#5C7CB0" })
+                        ${hl}(0, "TelescopePromptTitle", { bg = "none", fg = "#5C7CB0" })
                         ${hl}(0, "TelescopeResultsNormal", { bg = "none" })
-                        ${hl}(0, "TelescopeResultsBorder", { bg = "none", fg = "#6F7295" })
+                        ${hl}(0, "TelescopeResultsBorder", { bg = "none", fg = "#5C7CB0" })
                         ${hl}(0, "TelescopePreviewNormal", { bg = "none" })
-                        ${hl}(0, "TelescopePreviewBorder", { bg = "none", fg = "#6F7295" }) 
+                        ${hl}(0, "TelescopePreviewBorder", { bg = "none", fg = "#5C7CB0" }) 
 
                         ${hl}(0, "CursorLineNr", {
                             fg = "#fab387",
@@ -158,24 +169,50 @@ in
                 "overseer.nvim" = {
                     package = pkgs.vimPlugins.overseer-nvim;
                     priority = 1001;
+                };
 
-                    after = /* lua */ ''
-                        overseer = require('overseer')
 
-                        overseer.register_template({
-                            name = "Compile Release",
-                            builder = function(params) 
-                                return {
-                                    cmd = { "make"},
-                                    args = { "-j2" },
-                                }
-                            end,
+                "nvim-web-devicons" = {
+                    package = pkgs.vimPlugins.nvim-web-devicons;
+                    priority = 1001;
+                    lazy = false;
+                };
 
-                            desc = "Compile the project",
-                            tags = {overseer.TAG.BUILD},
-                        })                       
-                    
-                    '';
+                "gitsigns.nvim".package = pkgs.vimPlugins.gitsigns-nvim; 
+
+                "lualine.nvim" = { 
+                      package = pkgs.vimPlugins.lualine-nvim;
+
+                     after = /* lua */ ''
+                        require('lualine').setup {
+                          options = {
+                            component_separators = "",
+                            section_separators = { left = '', right = '' },
+                          },
+                          sections = {
+                            lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
+                            lualine_b = { 'filename', 'branch' },
+                            lualine_c = {
+                              '%=', --[[ add your center components here in place of this comment ]]
+                            },
+                            lualine_x = {},
+                            lualine_y = { 'filetype', 'progress' },
+                            lualine_z = {
+                              { 'location', separator = { right = '' }, left_padding = 2 },
+                            },
+                          },
+                          inactive_sections = {
+                            lualine_a = { 'filename' },
+                            lualine_b = {},
+                            lualine_c = {},
+                            lualine_x = {},
+                            lualine_y = {},
+                            lualine_z = { 'location' },
+                          },
+                          tabline = {},
+                          extensions = {},
+                        }
+                    ''; 
                 };
 
                 
@@ -200,6 +237,8 @@ in
                                 number = "󰉻";
                                 unknown = "";
                             };
+
+                            prompt_prefix = "";
 
                             overseer.enable = true;
                         };

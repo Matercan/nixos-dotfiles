@@ -173,6 +173,7 @@
         "nixpkgs": "nixpkgs",
         "nvf": "nvf",
         "spicetify-nix": "spicetify-nix",
+        "telescope-cmdline-nvim": "telescope-cmdline-nvim",
         "zen-browser": "zen-browser"
       }
     },
@@ -237,6 +238,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "telescope-cmdline-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1757874925,
+        "narHash": "sha256-UkbQkOK3vKtmwBgZltj17vqdhDL8UvC27vTAyQ2EGH0=",
+        "owner": "jonarrien",
+        "repo": "telescope-cmdline.nvim",
+        "rev": "b1c330835563c9628ce7c095cf20772f22f93f07",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jonarrien",
+        "repo": "telescope-cmdline.nvim",
         "type": "github"
       }
     },
