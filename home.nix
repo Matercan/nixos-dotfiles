@@ -19,6 +19,7 @@ in
         protonvpn-gui
         hyprshot
         hyprpicker
+        unzip
 
         (pkgs.writeShellApplication {
             name = "ns";

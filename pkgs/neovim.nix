@@ -1,4 +1,4 @@
-{ config, pkgs, nvf, telescope-cmdline-nvim, ... }: 
+{ pkgs, telescope-cmdline-nvim, ... }: 
 let 
     hl = "vim.api.nvim_set_hl";
 

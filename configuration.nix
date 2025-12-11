@@ -1,4 +1,4 @@
-{ config, lib, pkgs, honkai-railway-grub-theme,  ... }:
+{ pkgs, honkai-railway-grub-theme,  ... }:
 
 {
     imports =
@@ -81,6 +81,16 @@
         fira-code
         fira-code-symbols
         nerd-fonts.fira-code
+
+        (pkgs.stdenv.mkDerivation {
+            name = "script12";
+            src = ./config/fonts/iscript;
+            installPhase = /* shell */ ''
+                mkdir -p $out/share/fonts/truetype
+                cp *.ttf $out/share/fonts/truetype/
+                cp *.TTF $out/share/fonts/truetype/
+            '';
+        })
     ];
 
     qt = {
