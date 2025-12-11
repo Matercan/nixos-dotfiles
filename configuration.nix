@@ -83,12 +83,11 @@
         nerd-fonts.fira-code
 
         (pkgs.stdenv.mkDerivation {
-            name = "script12";
-            src = ./config/fonts/iscript;
-            installPhase = /* shell */ ''
+            name = "iscript";
+            src = ./config/fonts;
+            installPhase = ''
                 mkdir -p $out/share/fonts/truetype
-                cp *.ttf $out/share/fonts/truetype/
-                cp *.TTF $out/share/fonts/truetype/
+                find . -type f \( -iname "*.ttf" -o -iname "*.otf" \) -exec cp {} $out/share/fonts/truetype/ \;
             '';
         })
     ];
