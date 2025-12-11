@@ -69,7 +69,7 @@
         foot
         kitty
         quickshell
-        hyprshot
+        
         eza
         fastfetch
         fuzzel

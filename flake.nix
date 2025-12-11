@@ -20,7 +20,12 @@
         };
 
         spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-         
+
+        telescope-cmdline-nvim = {
+            url = "github:jonarrien/telescope-cmdline.nvim";
+            flake = false;
+        };
+
         nvf = {
             url = "github:notashelf/nvf";
             inputs = {
@@ -33,7 +38,7 @@
     outputs = { nixpkgs, home-manager, honkai-railway-grub-theme, zen-browser, spicetify-nix,  nvf, ... }: {
         nixosConfigurations.mangowc-btw = nixpkgs.lib.nixosSystem {
            system = "x86_64-linux";
-           specialArgs = { inherit honkai-railway-grub-theme; };
+           specialArgs = { inherit honkai-railway-grub-theme telescope-cmdline-nvim; };
            modules = [
                 ./configuration.nix
                 ./pkgs/neovim.nix
@@ -46,7 +51,7 @@
                         useUserPackages = true;
                         users.matercan = import ./home.nix;
                         backupFileExtension = "backup";
-                        extraSpecialArgs = { inherit zen-browser spicetify-nix; };
+                        extraSpecialArgs = { inherit zen-browser spicetify-nix ; };
                     };
                 }
             ];
