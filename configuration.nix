@@ -81,6 +81,7 @@
         fira-code
         fira-code-symbols
         nerd-fonts.fira-code
+        roboto
 
         (pkgs.stdenv.mkDerivation {
             name = "iscript";

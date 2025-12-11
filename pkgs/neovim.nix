@@ -7,6 +7,11 @@ let
         src = telescope-cmdline-nvim;
         doCheck = false;
     };
+
+    dependsPlugin = {
+        lazy = false;
+        priority = 1001;
+    };
 in
 {
     programs.nvf = {
@@ -16,12 +21,10 @@ in
             vim.viAlias = true;
             vim.vimAlias = false;
             vim.lsp.enable = true;
-            
             vim.globals = {
                 mapleader = " ";
                 mapleaderlocal = " "; 
             };
-            
             vim.options = {
 
                 shell = "/run/current-system/sw/bin/zsh";
@@ -62,7 +65,7 @@ in
 
                 context.setupOpts = {
                     line_numbers = true;
-                    max_lines = 100;       
+                    max_lines = 100;
                 };
 
                 grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
@@ -117,7 +120,6 @@ in
                 }
             ];
 
-            
 
             vim.extraPlugins = {
                 telescope-cmdline-nvim.package = cmdline-from-source;
@@ -136,48 +138,62 @@ in
 
                         styles.comments = [ "italic" ];
                         styles.keywords = [ "italic" ];
+
+                        integrations = { 
+                            gitsigns = true;
+                            lualine = true;
+                            dashboard = true;
+
+                            indent_blankline = {
+                                enabled = true;
+                                scope_color = "peach";
+                                colored_indent_levels = true;
+
+                            };
+                        };
                     };
 
                     after = /* lua */ ''
                         vim.cmd("Catppuccin macchiato")
 
+                        macchiato = require("catppuccin.palettes").get_palette "macchiato"
+
                         ${hl}(0, "Normal", { bg = "none" })  
                         ${hl}(0, "TelescopeNormal", {bg = "none" })
-                        ${hl}(0, "TelescopeBorder", {bg = "none", fg = "#5C7CB0" })
+                        ${hl}(0, "TelescopeBorder", {bg = "none", fg = macchiato.blue })
 
                         ${hl}(0, "TelescopePromptNormal", { bg = "none" })
-                        ${hl}(0, "TelescopePromptBorder", { bg = "none", fg = "#5C7CB0" })
-                        ${hl}(0, "TelescopePromptTitle", { bg = "none", fg = "#5C7CB0" })
+                        ${hl}(0, "TelescopePromptBorder", { bg = "none", fg = macchiato.blue })
+                        ${hl}(0, "TelescopePromptTitle", { bg = "none", fg = macchiato.blue })
                         ${hl}(0, "TelescopeResultsNormal", { bg = "none" })
-                        ${hl}(0, "TelescopeResultsBorder", { bg = "none", fg = "#5C7CB0" })
+                        ${hl}(0, "TelescopeResultsBorder", { bg = "none", fg = macchiato.blue })
                         ${hl}(0, "TelescopePreviewNormal", { bg = "none" })
-                        ${hl}(0, "TelescopePreviewBorder", { bg = "none", fg = "#5C7CB0" }) 
+                        ${hl}(0, "TelescopePreviewBorder", { bg = "none", fg = macchiato.blue }) 
+
 
                         ${hl}(0, "CursorLineNr", {
-                            fg = "#fab387",
+                            fg = macchiato.peach,
                             bold = true,
                         })
                     '';
                 };
 
-                "plenary.nvim" = {
-                    package = pkgs.vimPlugins.plenary-nvim;
-                    lazy = false;
-                    priority = 1001;
+                "plenary.nvim" = (dependsPlugin // { package = pkgs.vimPlugins.plenary-nvim;} );
+                "overseer.nvim" = (dependsPlugin // { package = pkgs.vimPlugins.overseer-nvim; });
+                "nvim-web-devicons" = (dependsPlugin // { package = pkgs.vimPlugins.nvim-web-devicons; });
+
+                "indent-blankline.nvim" = {
+                    package = pkgs.vimPlugins.indent-blankline-nvim;
+                    setupModule = "ibl";
                 };
 
-                "overseer.nvim" = {
-                    package = pkgs.vimPlugins.overseer-nvim;
-                    priority = 1001;
+                "dashboard-nvim" = {
+                    package = pkgs.vimPlugins.dashboard-nvim;
+
+                    setupModule = "dashboard";
                 };
 
-
-                "nvim-web-devicons" = {
-                    package = pkgs.vimPlugins.nvim-web-devicons;
-                    priority = 1001;
-                    lazy = false;
-                };
-
+                "vim-fugitive".package = pkgs.vimPlugins.vim-fugitive;
                 "gitsigns.nvim".package = pkgs.vimPlugins.gitsigns-nvim; 
 
                 "lualine.nvim" = { 
@@ -215,7 +231,6 @@ in
                     ''; 
                 };
 
-                
                 "telescope.nvim" = {
                     package = pkgs.vimPlugins.telescope-nvim;
                     lazy = false;
@@ -224,7 +239,7 @@ in
 
                     setupOpts = {
                         exntentions.cmdline = {
-                            picker.layout_config = { width = 120; height = 25; };
+                            picker.layout_config = { width = 240; height = 100; };
                             mappings = { 
                                 complete = "<Tab>";
                                 run_seleciton = "<C-CR>";
@@ -242,7 +257,7 @@ in
 
                             overseer.enable = true;
                         };
-                    };    
+                    };
 
                     after = /* lua */ ''
                         local builtin = require("telescope.builtin")
