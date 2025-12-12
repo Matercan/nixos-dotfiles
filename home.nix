@@ -16,6 +16,7 @@ in
         wl-clipboard
 
     	zen
+    	quickshell
         obs-studio
         equibop
         protonvpn-gui
@@ -58,4 +59,5 @@ in
     home.file.".config/equibop/themes".source = ./config/equibop/themes;
     home.file.".config/equibop/settings".source = ./config/equibop/settings;
     home.file.".config/Kvantum".source = ./config/Kvantum;
+    home.file.".config/quickshell".source = ./config/quickshell;
 }
