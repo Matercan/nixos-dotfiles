@@ -181,6 +181,7 @@ in
                 "plenary.nvim" = (dependsPlugin // { package = pkgs.vimPlugins.plenary-nvim;} );
                 "overseer.nvim" = (dependsPlugin // { package = pkgs.vimPlugins.overseer-nvim; });
                 "nvim-web-devicons" = (dependsPlugin // { package = pkgs.vimPlugins.nvim-web-devicons; });
+                "mini.icons" = (dependsPlugin // { package = pkgs.vimPlugins.mini-icons; });
 
                 "indent-blankline.nvim" = {
                     package = pkgs.vimPlugins.indent-blankline-nvim;
@@ -189,8 +190,12 @@ in
 
                 "dashboard-nvim" = {
                     package = pkgs.vimPlugins.dashboard-nvim;
-
                     setupModule = "dashboard";
+                };
+
+                "oil.nvim" = {
+                    package = pkgs.vimPlugins.oil-nvim;
+                    setupModule = "oil";
                 };
 
                 "vim-fugitive".package = pkgs.vimPlugins.vim-fugitive;

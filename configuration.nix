@@ -69,7 +69,7 @@
         foot
         kitty
         quickshell
-        
+
         eza
         fastfetch
         fuzzel
@@ -95,8 +95,8 @@
 
     qt = {
         enable = true;
-        platformTheme = "gnome";
-        style = "adwaita-dark";
+        platformTheme = "kde";
+        style = "kvantum";
     };
 
 

@@ -1,6 +1,7 @@
-{ config, pkgs, zen-browser, spicetify-nix, ... }:
+{ pkgs, zen-browser, spicetify-nix, ... }:
 let 
-    spicetify = spicetify-nix.lib.mkSpicetify pkgs {};
+    spicetify = spicetify-nix.homeManagerModules.spicetify;
+    zen = zen-browser.packages.${pkgs.system}.default;
 in
 {
     home.username = "matercan";
@@ -9,17 +10,21 @@ in
 
     home.packages = with pkgs; [
     	zsh-powerlevel10k 
-        zen-browser.packages.${pkgs.system}.default
+        ripgrep
         fzf
         zoxide
-        obs-studio
         wl-clipboard
-        ripgrep
+
+    	zen
+        obs-studio
         equibop
         protonvpn-gui
+        prismlauncher
+
+
+        pavucontrol
         hyprshot
         hyprpicker
-        unzip
 
         (pkgs.writeShellApplication {
             name = "ns";
@@ -33,7 +38,7 @@ in
     ]; 
 
     imports = [
-        spicetify-nix.homeManagerModules.spicetify
+        spicetify 
         ./pkgs/zsh.nix
         ./pkgs/spicetify.nix
     ];
@@ -52,4 +57,5 @@ in
     home.file.".config/fuzzel".source = ./config/fuzzel;
     home.file.".config/equibop/themes".source = ./config/equibop/themes;
     home.file.".config/equibop/settings".source = ./config/equibop/settings;
+    home.file.".config/Kvantum".source = ./config/Kvantum;
 }
