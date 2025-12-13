@@ -8,6 +8,14 @@ in
     home.homeDirectory = "/home/matercan";
     home.stateVersion = "25.11";
 
+    home.pointerCursor = {
+        package = pkgs.catppuccin-cursors.macchiatoLavender;
+        name = "catppuccin-macchiato-lavender-cursors";
+        size = 24;
+        gtk.enable = true;
+        x11.enable = true;
+    };
+
     home.packages = with pkgs; [
     	zsh-powerlevel10k 
         ripgrep
@@ -22,7 +30,7 @@ in
         protonvpn-gui
         prismlauncher
 
-
+        catppuccin-cursors.macchiatoLavender
         pavucontrol
         hyprshot
         hyprpicker

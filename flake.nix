@@ -37,9 +37,9 @@
 
     outputs = { nixpkgs, home-manager, honkai-railway-grub-theme, zen-browser, spicetify-nix, telescope-cmdline-nvim, nvf, ... }: {
         nixosConfigurations.mangowc-btw = nixpkgs.lib.nixosSystem {
-           system = "x86_64-linux";
-           specialArgs = { inherit honkai-railway-grub-theme telescope-cmdline-nvim; };
-           modules = [
+            system = "x86_64-linux";
+            specialArgs = { inherit honkai-railway-grub-theme telescope-cmdline-nvim; };
+            modules = [
                 ./configuration.nix
                 ./pkgs/neovim.nix
                 

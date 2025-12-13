@@ -170,11 +170,9 @@ in
                         ${hl}(0, "TelescopePreviewNormal", { bg = "none" })
                         ${hl}(0, "TelescopePreviewBorder", { bg = "none", fg = macchiato.blue }) 
 
-
-                        ${hl}(0, "CursorLineNr", {
-                            fg = macchiato.peach,
-                            bold = true,
-                        })
+                    
+                        ${hl}(0, "CursorLineNr", { fg = macchiato.peach, bold = true, })
+                        ${hl}(0, "Cursor", { fg = macchiato.lavender, })
                     '';
                 };
 

@@ -59,7 +59,7 @@
     users.users.matercan = {
         shell = pkgs.zsh;
         isNormalUser = true;
-        extraGroups = [ "wheel" ]; 
+        extraGroups = [ "wheel" "networkmanager" ]; 
     };
 
     programs.firefox.enable = true;
