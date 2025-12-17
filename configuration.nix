@@ -1,5 +1,15 @@
 { config, pkgs, honkai-railway-grub-theme,  ... }:
 
+let
+    customFonts = (pkgs.stdenv.mkDerivation {
+        name = "fonts";
+        src = ./config/fonts;
+        installPhase = ''
+            mkdir -p $out/share/fonts/truetype
+            find . -type f \( -iname "*.ttf" -o -iname "*.otf" \) -exec cp {} $out/share/fonts/truetype/ \;
+        '';
+    });
+in
 {
     imports =
     [
@@ -62,7 +72,6 @@
         extraGroups = [ "wheel" "networkmanager" ]; 
     };
 
-    programs.firefox.enable = true;
     environment.systemPackages = with pkgs; [
         vim 
         wget
@@ -83,14 +92,7 @@
         nerd-fonts.fira-code
         roboto
 
-        (pkgs.stdenv.mkDerivation {
-            name = "iscript";
-            src = ./config/fonts;
-            installPhase = ''
-                mkdir -p $out/share/fonts/truetype
-                find . -type f \( -iname "*.ttf" -o -iname "*.otf" \) -exec cp {} $out/share/fonts/truetype/ \;
-            '';
-        })
+        customFonts    
     ];
 
     qt = {
@@ -142,14 +144,16 @@
         package = config.boot.kernelPackages.nvidiaPackages.stable;
 
         prime = {
-            amdgpuBusId = "PCI:5:0:0";
-            nvidiaBusId = "PCI:1:0:0";
-
+          amdgpuBusId = "PCI:5:0:0";
+          nvidiaBusId = "PCI:1:0:0";
+          
             offload = {
                 enable = true;
                 enableOffloadCmd = true;
-            };
+          };
         };
     };
+
+
 }
 

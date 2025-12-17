@@ -21,10 +21,10 @@
 
         spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
-        telescope-cmdline-nvim = {
-            url = "github:jonarrien/telescope-cmdline.nvim";
-            flake = false;
-        };
+        telescope-cmdline-nvim.url = "github:jonarrien/telescope-cmdline.nvim";
+        telescope-cmdline-nvim.flake = false;
+        wakatime-nvim.url = "https://github.com/wakatime/vim-wakatime.git";
+        wakatime-nvim.flake = false;
 
         nvf = {
             url = "github:notashelf/nvf";
@@ -35,10 +35,10 @@
         };
     };
 
-    outputs = { nixpkgs, home-manager, honkai-railway-grub-theme, zen-browser, spicetify-nix, telescope-cmdline-nvim, nvf, ... }: {
+    outputs = { nixpkgs, home-manager, honkai-railway-grub-theme, zen-browser, spicetify-nix, telescope-cmdline-nvim, wakatime-nvim , nvf, ... }: {
         nixosConfigurations.mangowc-btw = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
-            specialArgs = { inherit honkai-railway-grub-theme telescope-cmdline-nvim; };
+            specialArgs = { inherit honkai-railway-grub-theme telescope-cmdline-nvim wakatime-nvim; };
             modules = [
                 ./configuration.nix
                 ./pkgs/neovim.nix

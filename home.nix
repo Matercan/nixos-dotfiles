@@ -2,6 +2,17 @@
 let 
     spicetify = spicetify-nix.homeManagerModules.spicetify;
     zen = zen-browser.packages.${pkgs.system}.default;
+    cursor = pkgs.catppuccin-cursors.macchiatoLavender;
+
+    ns = (pkgs.writeShellApplication {
+        name = "ns";
+        runtimeInputs = with pkgs; [
+        fzf
+        nix-search-tv
+        ];
+        excludeShellChecks = ["SC2016"];
+        text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
+    });
 in
 {
     home.username = "matercan";
@@ -30,20 +41,11 @@ in
         protonvpn-gui
         prismlauncher
 
-        catppuccin-cursors.macchiatoLavender
+        cursor
         pavucontrol
         hyprshot
         hyprpicker
-
-        (pkgs.writeShellApplication {
-            name = "ns";
-            runtimeInputs = with pkgs; [
-            fzf
-            nix-search-tv
-            ];
-            excludeShellChecks = ["SC2016"];
-            text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
-        })
+        ns
     ]; 
 
     imports = [
@@ -67,5 +69,5 @@ in
     home.file.".config/equibop/themes".source = ./config/equibop/themes;
     home.file.".config/equibop/settings".source = ./config/equibop/settings;
     home.file.".config/Kvantum".source = ./config/Kvantum;
-    home.file.".config/quickshell".source = ./config/quickshell;
+    home.file.".config/fastfetch".source = ./config/fastfetch;
 }

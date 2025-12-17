@@ -209,6 +209,7 @@
         "nvf": "nvf",
         "spicetify-nix": "spicetify-nix",
         "telescope-cmdline-nvim": "telescope-cmdline-nvim",
+        "wakatime-nvim": "wakatime-nvim",
         "zen-browser": "zen-browser"
       }
     },
@@ -290,6 +291,18 @@
         "owner": "jonarrien",
         "repo": "telescope-cmdline.nvim",
         "type": "github"
+      }
+    },
+    "wakatime-nvim": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-M9rmZ6gfqgqw4TMmXqG6CCL+GM8qx+VSD0SnwDWuqo0=",
+        "type": "file",
+        "url": "https://github.com/wakatime/vim-wakatime.git"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/wakatime/vim-wakatime.git"
       }
     },
     "zen-browser": {

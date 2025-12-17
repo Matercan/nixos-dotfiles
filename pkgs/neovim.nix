@@ -1,4 +1,4 @@
-{ pkgs, telescope-cmdline-nvim, ... }: 
+{ pkgs, telescope-cmdline-nvim, wakatime-nvim, ... }: 
 let 
     hl = "vim.api.nvim_set_hl";
 
@@ -7,7 +7,7 @@ let
         src = telescope-cmdline-nvim;
         doCheck = false;
     };
-
+    
     dependsPlugin = {
         lazy = false;
         priority = 1001;
@@ -198,6 +198,7 @@ in
 
                 "vim-fugitive".package = pkgs.vimPlugins.vim-fugitive;
                 "gitsigns.nvim".package = pkgs.vimPlugins.gitsigns-nvim; 
+                "vim-wakatime".package = pkgs.vimPlugins.vim-wakatime;
 
                 "lualine.nvim" = { 
                       package = pkgs.vimPlugins.lualine-nvim;
