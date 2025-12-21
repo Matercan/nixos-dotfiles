@@ -74,6 +74,7 @@ in
           cpp
           lua
           bash
+          json
         ];
 
         highlight.enable = true;
@@ -177,6 +178,7 @@ in
         clang.enable = true;
         bash.enable = true;
         csharp.enable = true;
+        json.enable = true;
       };
 
       vim.keymaps = [

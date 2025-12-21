@@ -47,6 +47,7 @@ in
     equibop
     protonvpn-gui
     prismlauncher
+    osu-lazer
 
     cursor
     ns
