@@ -299,11 +299,6 @@ in
           setupModule = "ibl";
         };
 
-        "dashboard-nvim" = {
-          package = pkgs.vimPlugins.dashboard-nvim;
-          setupModule = "dashboard";
-        };
-
         "oil.nvim" = {
           package = pkgs.vimPlugins.oil-nvim;
           setupModule = "oil";

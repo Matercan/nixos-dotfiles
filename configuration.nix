@@ -52,6 +52,20 @@ in
     withUWSM = true;
   };
 
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    fuse
+    icu
+  ];
+
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    appimage-run = pkgs.appimage-run.override {
+      extraPkgs = pkgs: [ pkgs.icu ];
+    };
+  };
   networking.hostName = "mangowc-btw";
   networking.networkmanager.enable = true;
 
