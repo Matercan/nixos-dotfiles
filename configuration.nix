@@ -52,6 +52,12 @@ in
     withUWSM = true;
   };
 
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    flake = "/home/matercan/nixos-dotfiles";
+  };
+
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     fuse
@@ -66,6 +72,7 @@ in
       extraPkgs = pkgs: [ pkgs.icu ];
     };
   };
+
   networking.hostName = "mangowc-btw";
   networking.networkmanager.enable = true;
 

@@ -18,6 +18,14 @@
         home-manager.follows = "home-manager";
       };
     };
+    hjem = {
+      url = "github:feel-co/hjem";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
@@ -26,10 +34,7 @@
 
     nvf = {
       url = "github:notashelf/nvf";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -37,11 +42,11 @@
     {
       nixpkgs,
       home-manager,
-      honkai-railway-grub-theme,
       zen-browser,
       spicetify-nix,
-      telescope-cmdline-nvim,
       nvf,
+      honkai-railway-grub-theme,
+      telescope-cmdline-nvim,
       ...
     }:
     {

@@ -179,6 +179,7 @@ in
         bash.enable = true;
         csharp.enable = true;
         json.enable = true;
+        qml.enable = true;
       };
 
       vim.keymaps = [
@@ -302,6 +303,11 @@ in
         "oil.nvim" = {
           package = pkgs.vimPlugins.oil-nvim;
           setupModule = "oil";
+        };
+
+        "nvim-surround" = {
+          package = pkgs.vimPlugins.nvim-surround;
+          setupModule = "nvim-surround";
         };
 
         "mini.pairs" = {
