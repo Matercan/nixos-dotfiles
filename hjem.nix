@@ -2,8 +2,12 @@
 let
   zen = inputs.zen-browser.packages.${pkgs.stdenv.system}.default;
   cursor = pkgs.catppuccin-cursors-macchiatoLavender;
+  spicepkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
 
   hjem-run = inputs.hjem-run.hjemModules.default;
+
+  dandelion = import ./dandelion.nix inputs;
+  inherit (dandelion) recursiveImport;
 
   ns = (
     pkgs.writeShellApplication {
@@ -40,6 +44,7 @@ in
 
       cursor
       ns
+      spicepkgs
       pavucontrol
       hyprshot
       hyprpicker
@@ -66,13 +71,16 @@ in
       XCURSOR_SIZE = "24";
     };
 
-    programs.gtk = {
-      enable = true;
-      theme = {
-        name = "Adwaita-dark";
-        package = pkgs.gnomes-themes-extra;
+    rum = {
+      imports = (recursiveImport ./modules);
+
+      programs.gtk = {
+        enable = true;
+        theme = {
+          name = "Adwaita-dark";
+          package = pkgs.gnomes-themes-extra;
+        };
       };
-      
     };
   };
 }

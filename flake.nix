@@ -47,8 +47,6 @@
   outputs =
     { ... }@inputs:
     let
-      dandelion = import ./dandelion.nix inputs;
-      inherit (dandelion) recursiveImport;
       system = "x86_64-linux";
     in
     {
@@ -56,12 +54,13 @@
       nixosConfigurations.mangowc-btw = inputs.nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
+          ./hjem.nix
+
           inputs.nvf.nixosModules.default
-          inputs.spicetify-nix.homeManagerModules.spicetify
           inputs.hjem.nixosModules.default
           inputs.honkai-railway-grub-theme.nixosModules.${system}.default
-        ]
-        ++ (recursiveImport ./modules);
+          inputs.spicetify-nix.nixosModules.spicetify
+        ];
 
       };
     };
