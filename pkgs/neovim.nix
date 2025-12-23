@@ -1,11 +1,11 @@
-{ pkgs, telescope-cmdline-nvim, ... }:
+{ inputs, pkgs, ... }:
 let
   hl = "vim.api.nvim_set_hl";
   km = "vim.keymap.set";
 
   cmdline-from-source = pkgs.vimUtils.buildVimPlugin {
     name = "telescope-cmdline-nvim";
-    src = telescope-cmdline-nvim;
+    src = inputs.telescope-cmdline-nvim;
     doCheck = false;
   };
 

@@ -1,12 +1,11 @@
 {
   pkgs,
-  zen-browser,
-  spicetify-nix,
+  inputs,  
   ...
 }:
 let
-  spicetify = spicetify-nix.homeManagerModules.spicetify;
-  zen = zen-browser.packages.${pkgs.system}.default;
+  spicetify = inputs.spicetify-nix.homeManagerModules.spicetify;
+  zen = inputs.zen-browser.packages.${pkgs.stdenv.system}.default;
   cursor = pkgs.catppuccin-cursors.macchiatoLavender;
 
   ns = (

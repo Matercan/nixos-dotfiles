@@ -1,7 +1,7 @@
 {
-  config,
   pkgs,
-  honkai-railway-grub-theme,
+  config,
+  inputs,
   ...
 }:
 
@@ -19,11 +19,9 @@ let
 in
 {
   imports = [
-    ./pkgs/git.nix
-    ./lab.nix
-
     ./hardware-configuration.nix
-    honkai-railway-grub-theme.nixosModules.x86_64-linux.default
+
+    inputs.honkai-railway-grub-theme.nixosModules.x86_64-linux.default
   ];
 
   boot.loader = {
@@ -67,12 +65,6 @@ in
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
 
-  nixpkgs.config.packageOverrides = pkgs: {
-    appimage-run = pkgs.appimage-run.override {
-      extraPkgs = pkgs: [ pkgs.icu ];
-    };
-  };
-
   networking.hostName = "mangowc-btw";
   networking.networkmanager.enable = true;
 
@@ -108,6 +100,10 @@ in
     wget
     foot
     quickshell
+
+    (appimage-run.override {
+      extraPkgs = pkgs: [ pkgs.icu ];
+    })
 
     eza
     fastfetch

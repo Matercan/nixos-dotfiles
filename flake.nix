@@ -38,38 +38,30 @@
     };
   };
 
-  outputs =
-    {
-      nixpkgs,
-      home-manager,
-      zen-browser,
-      spicetify-nix,
-      nvf,
-      honkai-railway-grub-theme,
-      telescope-cmdline-nvim,
-      ...
-    }:
-    {
-      nixosConfigurations.mangowc-btw = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit honkai-railway-grub-theme telescope-cmdline-nvim; };
-        modules = [
-          ./configuration.nix
-          ./pkgs/neovim.nix
+  outputs = inputs: {
+    nixosConfigurations.mangowc-btw = inputs.nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./configuration.nix
+        ./pkgs/neovim.nix
+        ./pkgs/git.nix
+        ./lab.nix
 
-          nvf.nixosModules.default
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.matercan = import ./home.nix;
-              backupFileExtension = "backup";
-              extraSpecialArgs = { inherit zen-browser spicetify-nix; };
-            };
-          }
-        ];
+        inputs.nvf.nixosModules.default
 
-      };
+        inputs.home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.matercan = import ./home.nix;
+            backupFileExtension = "backup";
+            extraSpecialArgs = { inherit inputs; };
+          };
+        }
+      ];
+
     };
+  };
 }
