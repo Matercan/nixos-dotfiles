@@ -4,7 +4,7 @@
   ...
 }:
 let
-  spicetify = inputs.spicetify-nix.homeManagerModules.spicetify;
+  spicetify = 
   zen = inputs.zen-browser.packages.${pkgs.stdenv.system}.default;
   cursor = pkgs.catppuccin-cursors.macchiatoLavender;
 
@@ -56,11 +56,6 @@ in
     fcitx5-mozc
   ];
 
-  imports = [
-    spicetify
-    ./pkgs/zsh.nix
-    ./pkgs/spicetify.nix
-  ];
 
   gtk = {
     enable = true;

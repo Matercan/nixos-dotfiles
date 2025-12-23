@@ -38,30 +38,36 @@
     };
   };
 
-  outputs = inputs: {
-    nixosConfigurations.mangowc-btw = inputs.nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
-      modules = [
-        ./configuration.nix
-        ./pkgs/neovim.nix
-        ./pkgs/git.nix
-        ./lab.nix
+  outputs =
+    { ... }@inputs:
+    let
+      dandelion = import ./dandelion.nix inputs;
+      inherit (dandelion) recursiveImport;
+    in
+    {
 
-        inputs.nvf.nixosModules.default
+      nixosConfigurations.mangowc-btw = inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          (recursiveImport ./modules)
 
-        inputs.home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.matercan = import ./home.nix;
-            backupFileExtension = "backup";
-            extraSpecialArgs = { inherit inputs; };
-          };
-        }
-      ];
+          inputs.nvf.nixosModules.default
+          inputs.spicetify-nix.homeManagerModules.spicetify
+          inputs.hjem.nixosModules.default
 
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.matercan = import ./home.nix;
+              backupFileExtension = "backup";
+              extraSpecialArgs = { inherit inputs; };
+            };
+          }
+        ];
+
+      };
     };
-  };
 }
