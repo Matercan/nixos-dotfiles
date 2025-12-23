@@ -1,10 +1,9 @@
 {
   pkgs,
-  inputs,  
+  inputs,
   ...
 }:
 let
-  spicetify = 
   zen = inputs.zen-browser.packages.${pkgs.stdenv.system}.default;
   cursor = pkgs.catppuccin-cursors.macchiatoLavender;
 
@@ -55,7 +54,6 @@ in
     fcitx5
     fcitx5-mozc
   ];
-
 
   gtk = {
     enable = true;

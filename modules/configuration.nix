@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  inputs,
   ...
 }:
 
@@ -18,12 +17,6 @@ let
   );
 in
 {
-  imports = [
-    ./hardware-configuration.nix
-
-    inputs.honkai-railway-grub-theme.nixosModules.x86_64-linux.default
-  ];
-
   boot.loader = {
     grub = {
       enable = true;
@@ -127,6 +120,7 @@ in
     style = "kvantum";
   };
 
+  
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"

@@ -22,6 +22,12 @@
       url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hjem-rum = {
+      url = "github:snugnug/hjem-rum";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.hjem.follows = "hjem";
+    };
+
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -43,30 +49,19 @@
     let
       dandelion = import ./dandelion.nix inputs;
       inherit (dandelion) recursiveImport;
+      system = "x86_64-linux";
     in
     {
 
       nixosConfigurations.mangowc-btw = inputs.nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          (recursiveImport ./modules)
-
           inputs.nvf.nixosModules.default
           inputs.spicetify-nix.homeManagerModules.spicetify
           inputs.hjem.nixosModules.default
-
-          inputs.home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.matercan = import ./home.nix;
-              backupFileExtension = "backup";
-              extraSpecialArgs = { inherit inputs; };
-            };
-          }
-        ];
+          inputs.honkai-railway-grub-theme.nixosModules.${system}.default
+        ]
+        ++ (recursiveImport ./modules);
 
       };
     };
