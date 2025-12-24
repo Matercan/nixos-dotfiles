@@ -15,7 +15,7 @@ let
   };
 in
 {
-  hjem.matercan.rum.programs.nvf = {
+  programs.nvf = {
     enable = true;
 
     settings = {

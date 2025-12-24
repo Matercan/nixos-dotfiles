@@ -2,30 +2,14 @@
 
 let
   co = "--color=always --icons=always";
-  OMZH = "ohmyzsh/ohmyzsh path:plugins";
+  # OMZH = "ohmyzsh/ohmyzsh path:plugins";
 in
 {
-  hjem.matercan.rum.programs.zsh = {
+  hjem.users.matercan.rum.programs.zsh = {
     enable = true;
 
-    shellAliases = {
-      btw = "echo I use nix btw";
-      svim = "sudo -e";
-      update = "nh os switch $HOME/nixos-dotfiles/";
+    initConfig = /* shell */ ''
 
-      la = "eza -la ${co}";
-      ldot = "eza -ld .* ${co}";
-      lD = "eza -lD ${co}";
-      lDD = "eza -laD ${co}";
-      ll = "eza -l ${co}";
-      ls = "eza ${co}";
-      lsd = "eza -d ${co}";
-      lsdl = "eza -dl ${co}";
-      lS = "eza -l -ssize ${co}";
-      lT = "eza -l -snewest ${co}";
-    };
-
-    initContent = /* shell */ ''
       if [[ -z "$WAYLAND_DISPLAY" ]] && [[ "$XDG_VTNR" == 1 ]]; then
          exec Hyprland
       fi
@@ -33,6 +17,31 @@ in
       bindkey -e
       bindkey '^p' history-search-backward
       bindkey '^n' history-search-forward
+
+      alias btw = "echo I use nix btw";
+      alias svim = "sudo -e";
+      alias update = "nh os switch $HOME/nixos-dotfiles/";
+      alias la = "eza -la ${co}";
+      alias ldot = "eza -ld .* ${co}";
+      alias lD = "eza -lD ${co}";
+      alias lDD = "eza -laD ${co}";
+      alias  ll = "eza -l ${co}";
+      alias ls = "eza ${co}";
+      alias lsd = "eza -d ${co}";
+      alias lsdl = "eza -dl ${co}";
+      alias lS = "eza -l -ssize ${co}";
+      alias lT = "eza -l -snewest ${co}";
+
+      HISTSIZE=1000
+      HISTFILE=~/.zsh_history
+      SAVEHIST=$HISTSIZE
+      HISTDUP=erase
+      setopt appendhistory
+      setopt sharehistory
+      setopt hist_ignore_space
+      setopt hist_ignore_dups
+      setopt hist_find_no_dups
+      setopt his_save_no_dups
 
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
       zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
@@ -49,51 +58,14 @@ in
 
     '';
 
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
 
-    history = {
-      size = 10000;
-      append = true;
-      share = true;
-      ignoreAllDups = true;
-      ignoreSpace = true;
-      saveNoDups = true;
-      findNoDups = true;
-
-      path = "$HOME/.zsh_history";
-      ignorePatterns = [ "sudo *" ];
+    plugins = {
+      "zsh-syntax-highlighting".source = pkgs.zsh-syntax-highlighting;
+      "zsh-autocompletions".source = pkgs.zsh-completions;
+      "zsh-nix-completions".source = pkgs.nix-zsh-completions;
+      "zsh-completions".source = pkgs.zsh-completion-sync;
+      "zsh-powerlevel10k".source = pkgs.zsh-powerlevel10k;
+      "fzf-tab".source = pkgs.zsh-fzf-tab; 
     };
-
-    antidote = {
-      enable = true;
-      plugins = [
-        ''
-          zsh-users/zsh-autosuggestions
-          zsh-users/zsh-completions
-          romkatv/powerlevel10k
-          Aloxaf/fzf-tab
-
-          ${OMZH}/git/git.plugin.zsh
-          ${OMZH}/sudo/sudo.plugin.zsh
-          ${OMZH}/rust/rust.plugin.zsh
-          ${OMZH}/foot/foot.plugin.zsh
-          ${OMZH}/command-not-found/command-not-found.plugin.zsh
-        ''
-      ];
-    };
-
-    plugins = [
-      {
-        name = "zsh-syntax-highlighting";
-        src = pkgs.fetchFromGitHub {
-          owner = "zsh-users";
-          repo = "zsh-syntax-highlighting";
-          tag = "master";
-          sha256 = "sha256-iJdWopZwHpSyYl5/FQXEW7gl/SrKaYDEtTH9cGP7iPo=";
-        };
-      }
-    ];
   };
 }

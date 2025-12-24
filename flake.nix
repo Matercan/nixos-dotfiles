@@ -34,7 +34,6 @@
     };
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    flake-parts.url = "github:hercules-ci/flake-parts";
 
     telescope-cmdline-nvim.url = "github:jonarrien/telescope-cmdline.nvim";
     telescope-cmdline-nvim.flake = false;
@@ -46,11 +45,24 @@
   };
 
   outputs =
-    { flake-parts, ... }@inputs:
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = ["x86_64-linux"];
-      imports = [
-        ./modules
-      ];
+    { ... }@inputs:
+    let
+      system = "x86_64-linux";
+      dandelion = import ./dandelion.nix inputs;
+      inherit (dandelion) recursiveImport;
+    in
+    {
+
+      nixosConfigurations.mangowc-btw = inputs.nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+	system = system;
+        modules = [
+          ./hjem.nix
+          inputs.nvf.nixosModules.default
+          inputs.hjem.nixosModules.default
+          inputs.honkai-railway-grub-theme.nixosModules.${system}.default
+          inputs.spicetify-nix.nixosModules.spicetify
+        ] ++ (recursiveImport ./modules);
+      };
     };
 }
