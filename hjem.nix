@@ -2,12 +2,8 @@
 let
   zen = inputs.zen-browser.packages.${pkgs.stdenv.system}.default;
   cursor = pkgs.catppuccin-cursors.macchiatoLavender;
-  spicepkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
 
   hjem-rum = inputs.hjem-rum.hjemModules.default;
-
-  dandelion = import ./dandelion.nix inputs;
-  inherit (dandelion) recursiveImport;
 
   ns = (
     pkgs.writeShellApplication {
