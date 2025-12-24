@@ -224,7 +224,6 @@ in
                 enabled = true;
                 scope_color = "peach";
                 colored_indent_levels = true;
-
               };
             };
           };
@@ -457,8 +456,8 @@ in
           setupOpts = {
             exntentions.cmdline = {
               picker.layout_config = {
-                width = 240;
-                height = 100;
+                width = 480;
+                height = 200;
               };
               mappings = {
                 complete = "<Tab>";

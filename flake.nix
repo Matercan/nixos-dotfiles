@@ -28,11 +28,6 @@
       inputs.hjem.follows = "hjem";
     };
 
-    stylix = {
-      url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
     telescope-cmdline-nvim.url = "github:jonarrien/telescope-cmdline.nvim";
@@ -55,14 +50,16 @@
 
       nixosConfigurations.mangowc-btw = inputs.nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
-	system = system;
+        system = system;
         modules = [
           ./hjem.nix
+
           inputs.nvf.nixosModules.default
           inputs.hjem.nixosModules.default
           inputs.honkai-railway-grub-theme.nixosModules.${system}.default
           inputs.spicetify-nix.nixosModules.spicetify
-        ] ++ (recursiveImport ./modules);
+        ]
+        ++ (recursiveImport ./modules);
       };
     };
 }
