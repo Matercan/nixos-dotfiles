@@ -48,10 +48,9 @@
   outputs =
     { flake-parts, ... }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = import inputs.systems;
+      systems = ["x86_64-linux"];
       imports = [
         ./modules
-        ./parts
       ];
     };
 }
