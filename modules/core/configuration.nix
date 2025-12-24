@@ -43,6 +43,12 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
+  nixpkgs.config.packageOverrides = pkgs: {
+    appimage-run = pkgs.appimage-run.override {
+      extraPkgs = pkgs: [ pkgs.icu ];
+    };
+  };
+
   i18n.defaultLocale = "en_GB.UTF-8";
   console = {
     keyMap = "uk";

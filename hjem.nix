@@ -24,7 +24,6 @@ in
     user = "matercan";
     directory = "/home/matercan";
 
-
     packages = with pkgs; [
       zsh-powerlevel10k
       ripgrep
