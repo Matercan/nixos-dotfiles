@@ -37,29 +37,44 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
-  outputs =
-    { ... }@inputs:
-    let
-      system = "x86_64-linux";
-      dandelion = import ./dandelion.nix inputs;
-      inherit (dandelion) recursiveImport;
-    in
-    {
+  outputs = inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } ({ config, withSystem, moduleWithSystem, ... }: {
+      imports = [
+        # Optional: use external flake logic, e.g.
+        # inputs.foo.flakeModules.default
+      ];
+      flake = {
+        nixosConfigurations.mangowc-btw = inputs.nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          system = "x86_64-linux";
+          modules = [
+            ./hjem.nix
 
-      nixosConfigurations.mangowc-btw = inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        system = system;
-        modules = [
-          ./hjem.nix
-
-          inputs.nvf.nixosModules.default
-          inputs.hjem.nixosModules.default
-          inputs.honkai-railway-grub-theme.nixosModules.${system}.default
-          inputs.spicetify-nix.nixosModules.spicetify
-        ]
-        ++ (recursiveImport ./modules);
+            inputs.nvf.nixosModules.default
+            inputs.hjem.nixosModules.default
+            inputs.honkai-railway-grub-theme.nixosModules.${"x86_64-linux"}.default
+            inputs.spicetify-nix.nixosModules.spicetify
+          ]
+          ++ (let
+                inherit (inputs.nixpkgs.lib) filter hasSuffix filesystem;
+                recursiveImport = path: filter (hasSuffix ".nix") (filesystem.listFilesRecursive path);
+              in recursiveImport ./modules);
+        };
       };
-    };
+      systems = [
+        "x86_64-linux"
+      ];
+      perSystem = { config, pkgs, ... }: {
+        # Recommended: move all package definitions here.
+        # e.g. (assuming you have a nixpkgs input)
+        # packages.foo = pkgs.callPackage ./foo/package.nix { };
+        # packages.bar = pkgs.callPackage ./bar/package.nix {
+        #   foo = config.packages.foo;
+        # };
+      };
+    });
 }
