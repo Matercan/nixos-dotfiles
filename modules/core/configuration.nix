@@ -8,7 +8,7 @@ let
   customFonts = (
     pkgs.stdenv.mkDerivation {
       name = "fonts";
-      src = ../config/fonts;
+      src = ../../config/fonts;
       installPhase = ''
         mkdir -p $out/share/fonts/truetype
         find . -type f \( -iname "*.ttf" -o -iname "*.otf" \) -exec cp {} $out/share/fonts/truetype/ \;
@@ -35,28 +35,6 @@ in
   };
 
   services.getty.autologinUser = "matercan";
-  programs.zsh.enable = true;
-
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-    withUWSM = true;
-  };
-
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    flake = "/home/matercan/nixos-dotfiles";
-  };
-
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    fuse
-    icu
-  ];
-
-  programs.appimage.enable = true;
-  programs.appimage.binfmt = true;
 
   networking.hostName = "mangowc-btw";
   networking.networkmanager.enable = true;
@@ -114,23 +92,10 @@ in
     customFonts
   ];
 
-  qt = {
-    enable = true;
-    platformTheme = "kde";
-    style = "kvantum";
-  };
-
-  
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
-
-  programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
 
   services.openssh = {
     enable = true;

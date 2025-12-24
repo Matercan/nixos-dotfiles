@@ -5,6 +5,8 @@ let
   OMZH = "${pkgs.oh-my-zsh}/share/oh-my-zsh";
 in
 {
+  programs.zsh.enable = true;
+
   hjem.users.matercan.rum.programs.zsh = {
     enable = true;
 
