@@ -5,7 +5,7 @@ let
   OMZH = "ohmyzsh/ohmyzsh path:plugins";
 in
 {
-  programs.zsh = {
+  hjem.matercan.rum.programs.zsh = {
     enable = true;
 
     shellAliases = {

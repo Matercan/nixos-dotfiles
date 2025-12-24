@@ -3,7 +3,7 @@ let
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
 in
 {
-  programs.spicetify = {
+  hjem.matercan.rum.programs.spicetify = {
     enable = true;
 
     enabledExtensions = with spicePkgs.extensions; [

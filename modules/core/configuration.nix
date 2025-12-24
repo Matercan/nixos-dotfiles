@@ -8,7 +8,7 @@ let
   customFonts = (
     pkgs.stdenv.mkDerivation {
       name = "fonts";
-      src = ./config/fonts;
+      src = ../config/fonts;
       installPhase = ''
         mkdir -p $out/share/fonts/truetype
         find . -type f \( -iname "*.ttf" -o -iname "*.otf" \) -exec cp {} $out/share/fonts/truetype/ \;

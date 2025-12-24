@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{  pkgs, ... }:
 
 {
   users.users.git = {
@@ -14,7 +14,7 @@
 
   users.groups.git = { };
 
-  programs.git = {
+  hjem.matercan.rum.programs.git = {
     enable = true;
 
     config = {

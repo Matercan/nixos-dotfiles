@@ -34,6 +34,7 @@
     };
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    flake-parts.url = "github:hercules-ci/flake-parts";
 
     telescope-cmdline-nvim.url = "github:jonarrien/telescope-cmdline.nvim";
     telescope-cmdline-nvim.flake = false;
@@ -45,23 +46,12 @@
   };
 
   outputs =
-    { ... }@inputs:
-    let
-      system = "x86_64-linux";
-    in
-    {
-
-      nixosConfigurations.mangowc-btw = inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hjem.nix
-
-          inputs.nvf.nixosModules.default
-          inputs.hjem.nixosModules.default
-          inputs.honkai-railway-grub-theme.nixosModules.${system}.default
-          inputs.spicetify-nix.nixosModules.spicetify
-        ];
-
-      };
+    { flake-parts, ... }@inputs:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = import inputs.systems;
+      imports = [
+        ./modules
+        ./parts
+      ];
     };
 }
