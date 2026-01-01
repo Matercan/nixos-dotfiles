@@ -26,6 +26,10 @@
               inputs.hjem.nixosModules.default
               inputs.honkai-railway-grub-theme.nixosModules."x86_64-linux".default
               inputs.spicetify-nix.nixosModules.spicetify
+              inputs.mango.nixosModules.mango
+              {
+                programs.mango.enable = true;
+              }
             ]
             ++ (
               let
@@ -59,6 +63,10 @@
         home-manager.follows = "home-manager";
       };
     };
+    mango = {
+      url = "github:DreamMaoMao/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hjem = {
       url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -69,17 +77,17 @@
       inputs.hjem.follows = "hjem";
     };
 
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-
-    telescope-cmdline-nvim.url = "github:jonarrien/telescope-cmdline.nvim";
-    telescope-cmdline-nvim.flake = false;
-
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     flake-parts.url = "github:hercules-ci/flake-parts";
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+
+    telescope-cmdline-nvim.url = "github:jonarrien/telescope-cmdline.nvim";
+    telescope-cmdline-nvim.flake = false;
+
   };
 
 }

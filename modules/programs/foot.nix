@@ -19,7 +19,6 @@ in
       colors = {
         background = colors.background;
         foreground = colors.text;
-        cursor = colors.accent;
         selection-background = colors.selection_background;
 
         regular0 = colors.regular0;

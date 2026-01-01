@@ -13,7 +13,7 @@ in
     initConfig = /* shell */ ''
 
       if [[ -z "$WAYLAND_DISPLAY" ]] && [[ "$XDG_VTNR" == 1 ]]; then
-         exec Hyprland
+         exec mangowc
       fi
 
       bindkey -e

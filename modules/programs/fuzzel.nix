@@ -11,7 +11,7 @@ in
     settings = {
       border.radius = 10;
       border.width = 4;
-      demu.exit-immediate-if-empty = "yes";
+      dmenu.exit-immediate-if-empty = "yes";
 
       main = {
         font = "Fira Code:size=9";
