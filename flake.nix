@@ -8,7 +8,6 @@
         config,
         withSystem,
         moduleWithSystem,
-        pkgs,
         ...
       }:
       {
@@ -18,13 +17,13 @@
         flake = {
           nixosConfigurations.mangowc-btw = inputs.nixpkgs.lib.nixosSystem {
             specialArgs = { inherit inputs; };
-            system = pkgs.stdenv.hostPlatform.system;
+            system = "x86_64-linux";
             modules = [
               ./hjem.nix
 
               inputs.nvf.nixosModules.default
               inputs.hjem.nixosModules.default
-              inputs.honkai-railway-grub-theme.nixosModules.${pkgs.stdenv.hostPlatform.system}.default
+              inputs.honkai-railway-grub-theme.nixosModules."x86_64-linux".default
               inputs.spicetify-nix.nixosModules.spicetify
             ]
             ++ (

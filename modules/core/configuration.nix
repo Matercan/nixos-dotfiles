@@ -80,7 +80,7 @@ in
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-color-emoji
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
 
     fira-code
     fira-code-symbols
