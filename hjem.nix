@@ -2,6 +2,7 @@
 let
   zen = inputs.zen-browser.packages.${pkgs.stdenv.system}.default;
   cursor = pkgs.catppuccin-cursors.macchiatoLavender;
+  gtk-theme = pkgs.gnome-themes-extra;
 
   hjem-rum = inputs.hjem-rum.hjemModules.default;
 
@@ -38,6 +39,7 @@ in
       protonvpn-gui
       prismlauncher
 
+      gtk-theme
       cursor
       ns
       pavucontrol

@@ -1,6 +1,5 @@
 {
   pkgs,
-  config,
   ...
 }:
 
@@ -34,7 +33,6 @@ in
     theme = "Evernight";
   };
 
-  services.getty.autologinUser = "matercan";
 
   networking.hostName = "mangowc-btw";
   networking.networkmanager.enable = true;
@@ -52,14 +50,6 @@ in
   i18n.defaultLocale = "en_GB.UTF-8";
   console = {
     keyMap = "uk";
-  };
-
-  services.xserver.xkb.layout = "gb";
-  services.printing.enable = true;
-
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
   };
 
   users.users.matercan = {
@@ -90,6 +80,8 @@ in
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-color-emoji
+    noto-fonts-cjk
+
     fira-code
     fira-code-symbols
     nerd-fonts.fira-code
@@ -103,46 +95,6 @@ in
     "flakes"
   ];
 
-  services.openssh = {
-    enable = true;
-    extraConfig = ''
-      Match user git
-          allowTcpForwarding no
-          AllowAgentForwarding no
-          PasswordAuthentication no
-          X11Forwarding no
-    '';
-  };
+
   system.stateVersion = "25.11";
-
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
-
-  services.xserver.videoDrivers = [ "nvidia" ];
-
-  hardware.nvidia = {
-    modesetting.enable = true;
-
-    powerManagement.enable = true;
-    powerManagement.finegrained = false;
-
-    open = false;
-
-    nvidiaSettings = true;
-
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-
-    prime = {
-      amdgpuBusId = "PCI:5:0:0";
-      nvidiaBusId = "PCI:1:0:0";
-
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
-      };
-    };
-  };
-
 }
