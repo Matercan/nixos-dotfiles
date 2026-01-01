@@ -44,14 +44,11 @@ in
       cursor
       ns
       pavucontrol
-      hyprshot
-      hyprpicker
       fcitx5
       fcitx5-mozc
     ];
 
     files = {
-      ".config/hypr".source = ./config/hypr;
       ".config/equibop/themes".source = ./config/equibop/themes;
       ".config/equibop/settings".source = ./config/equibop/settings;
       ".config/Kvantum".source = ./config/Kvantum;

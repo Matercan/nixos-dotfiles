@@ -8,8 +8,7 @@ let
 in
 {
   hjem.users.matercan.files = {
-    ".config/mango/config.conf".source = ./config/mango/config.conf;
-    ".config/mango/autostart.sh".source = ./config/mango/autostart.sh;
+    ".config/mango/config.conf".source = ../../config/mango/config.conf;
 
     ".config/mango/colors.sh".source = mangoColors;
   };
