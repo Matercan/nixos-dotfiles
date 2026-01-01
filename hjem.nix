@@ -64,6 +64,9 @@ in
       HYPRCURSOR_THEME = "catppuccin-macchiato-lavender-cursors";
       XCURSOR_THEME = "catppuccin-macchiato-lavender-cursors";
       XCURSOR_SIZE = "24";
+      GTK_IM_MODULE="fcitx";
+      QT_IM_MODULE="fcitx";
+      QT_IM_MODULES="wayland;fcitx;ibus";
     };
 
     rum = {
