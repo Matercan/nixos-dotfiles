@@ -82,9 +82,8 @@ in
     noto-fonts-color-emoji
     noto-fonts-cjk-sans
 
-    fira-code
-    fira-code-symbols
-    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.victor-mono
     roboto
 
     customFonts

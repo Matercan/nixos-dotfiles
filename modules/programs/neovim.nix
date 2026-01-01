@@ -1,7 +1,15 @@
-{ inputs, pkgs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 let
   hl = "vim.api.nvim_set_hl";
   km = "vim.keymap.set";
+  plug = pkgs.vimPlugins;
+
+  colors = config.colors;
 
   cmdline-from-source = pkgs.vimUtils.buildVimPlugin {
     name = "telescope-cmdline-nvim";
@@ -67,7 +75,7 @@ in
           max_lines = 100;
         };
 
-        grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+        grammars = with plug.nvim-treesitter.builtGrammars; [
           regex
           nix
           c
@@ -203,7 +211,7 @@ in
 
       vim.lazy.plugins = {
         "catppuccin-nvim" = {
-          package = pkgs.vimPlugins.catppuccin-nvim;
+          package = plug.catppuccin-nvim;
           lazy = false;
           priority = 1000;
           setupModule = "catppuccin";
@@ -213,7 +221,10 @@ in
             term_colors = true;
 
             styles.comments = [ "italic" ];
-            styles.keywords = [ "italic" ];
+            styles.keywords = [
+              "italic"
+              "bold"
+            ];
 
             integrations = {
               gitsigns = true;
@@ -224,6 +235,40 @@ in
                 enabled = true;
                 scope_color = "peach";
                 colored_indent_levels = true;
+              };
+            };
+
+            color_overrides = {
+              all = {
+                text = colors.text;
+                base = colors.background;
+                mantle = colors.background;
+                crust = colors.border;
+
+                surface0 = colors.background;
+                surface1 = colors.selection;
+                surface2 = colors.accent;
+
+                rosewater = colors.regular1;
+                flamingo = colors.regular1;
+                pink = colors.regular4;
+                mauve = colors.regular4;
+                red = colors.bright1;
+                maroon = colors.regular1;
+                peach = colors.regular3;
+                yellow = colors.bright3;
+                green = colors.regular2;
+                teal = colors.regular6;
+                sky = colors.bright4;
+                sapphire = colors.bright4;
+                blue = colors.regular4;
+                lavender = colors.regular5;
+
+                subtext1 = colors.secondary_text;
+                subtext0 = colors.foreground;
+                overlay2 = colors.selection_background;
+                overlay1 = colors.selection;
+                overlay0 = colors.selection;
               };
             };
           };
@@ -269,48 +314,48 @@ in
           '';
         };
 
-        "plenary.nvim" = (dependsPlugin // { package = pkgs.vimPlugins.plenary-nvim; });
-        "overseer.nvim" = (dependsPlugin // { package = pkgs.vimPlugins.overseer-nvim; });
-        "nvim-web-devicons" = (dependsPlugin // { package = pkgs.vimPlugins.nvim-web-devicons; });
-        "mini.icons" = (dependsPlugin // { package = pkgs.vimPlugins.mini-icons; });
+        "plenary.nvim" = (dependsPlugin // { package = plug.plenary-nvim; });
+        "overseer.nvim" = (dependsPlugin // { package = plug.overseer-nvim; });
+        "nvim-web-devicons" = (dependsPlugin // { package = plug.nvim-web-devicons; });
+        "mini.icons" = (dependsPlugin // { package = plug.mini-icons; });
         "dressing.nvim" = (
           dependsPlugin
           // {
-            package = pkgs.vimPlugins.dressing-nvim;
+            package = plug.dressing-nvim;
             setupModule = "dressing";
           }
         );
 
-        "cmp-nvim-lsp" = (dependsPlugin // { package = pkgs.vimPlugins.cmp-nvim-lsp; });
-        "cmp_luasnip" = (dependsPlugin // { package = pkgs.vimPlugins.cmp_luasnip; });
-        "friendly-snippets" = (dependsPlugin // { package = pkgs.vimPlugins.friendly-snippets; });
+        "cmp-nvim-lsp" = (dependsPlugin // { package = plug.cmp-nvim-lsp; });
+        "cmp_luasnip" = (dependsPlugin // { package = plug.cmp_luasnip; });
+        "friendly-snippets" = (dependsPlugin // { package = plug.friendly-snippets; });
 
-        "vim-fugitive".package = pkgs.vimPlugins.vim-fugitive;
-        "gitsigns.nvim".package = pkgs.vimPlugins.gitsigns-nvim;
-        "vim-wakatime".package = pkgs.vimPlugins.vim-wakatime;
+        "vim-fugitive".package = plug.vim-fugitive;
+        "gitsigns.nvim".package = plug.gitsigns-nvim;
+        "vim-wakatime".package = plug.vim-wakatime;
 
         "luasnip" = {
-          package = pkgs.vimPlugins.luasnip;
+          package = plug.luasnip;
           priority = 1000;
         };
 
         "indent-blankline.nvim" = {
-          package = pkgs.vimPlugins.indent-blankline-nvim;
+          package = plug.indent-blankline-nvim;
           setupModule = "ibl";
         };
 
         "oil.nvim" = {
-          package = pkgs.vimPlugins.oil-nvim;
+          package = plug.oil-nvim;
           setupModule = "oil";
         };
 
         "nvim-surround" = {
-          package = pkgs.vimPlugins.nvim-surround;
+          package = plug.nvim-surround;
           setupModule = "nvim-surround";
         };
 
         "mini.pairs" = {
-          package = pkgs.vimPlugins.mini-pairs;
+          package = plug.mini-pairs;
 
           after = /* lua */ ''
             require("mini.pairs").setup {
@@ -333,7 +378,7 @@ in
         };
 
         "nvim-cmp" = {
-          package = pkgs.vimPlugins.nvim-cmp;
+          package = plug.nvim-cmp;
 
           after = /* lua */ ''
             local cmp = require("cmp")
@@ -413,7 +458,7 @@ in
         };
 
         "lualine.nvim" = {
-          package = pkgs.vimPlugins.lualine-nvim;
+          package = plug.lualine-nvim;
 
           after = /* lua */ ''
             require('lualine').setup {
@@ -448,7 +493,7 @@ in
         };
 
         "telescope.nvim" = {
-          package = pkgs.vimPlugins.telescope-nvim;
+          package = plug.telescope-nvim;
           lazy = false;
           priority = 1000;
           setupModule = "telescope";
