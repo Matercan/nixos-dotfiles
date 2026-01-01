@@ -8,16 +8,10 @@ let
     name = "custom-fonts";
     src = ../../config/fonts;
 
-    dontBuild = true;
-
     installPhase = ''
       mkdir -p $out/share/fonts/truetype
       find $src -type f \( -iname "*.ttf" -o -iname "*.otf" \) -exec cp {} $out/share/fonts/truetype/ \;
     '';
-
-    meta = {
-      description = "Custom fonts";
-    };
   };
 in
 {
