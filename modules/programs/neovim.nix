@@ -9,7 +9,7 @@ let
   km = "vim.keymap.set";
   plug = pkgs.vimPlugins;
 
-  colors = config.colors;
+  colors = config.colors-hex;
 
   cmdline-from-source = pkgs.vimUtils.buildVimPlugin {
     name = "telescope-cmdline-nvim";

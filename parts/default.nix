@@ -1,3 +1,5 @@
-lib: {
-  inherit ((import ./colors.nix lib)) colors add_hex;
+{ ...}: {
+  imports = [
+    ./colors.nix
+  ]; 
 }

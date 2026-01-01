@@ -29,16 +29,16 @@ in
       };
 
       colors = {
-        background = colors.background;
-        text = colors.text;
-        border = colors.border;
-        prompt = colors.accent;
-        input = colors.accent;
+        background = colors.background + "ff";
+        text = colors.text + "ff";
+        border = colors.border + "ff";
+        prompt = colors.regular6 + "ff";
+        input = colors.regular6 + "ff";
 
-        selection = colors.secondary;
-        selected-text = colors.secondary_text;
-        selection_match = colors.accent;
-        counter = colors.accent;
+        selection = colors.secondary + "88";
+        selected-text = colors.secondary_text + "ff";
+        selection_match = colors.regular6 + "88";
+        counter = colors.regular6 + "ff";
       };
     };
   };

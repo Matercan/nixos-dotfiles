@@ -1,4 +1,4 @@
-{ config, }:
+{ config, ...}:
 
 let
   colors = config.colors;
@@ -12,8 +12,8 @@ in
 
       main = {
         shell = "/etc/profiles/per-user/matercan/bin/zsh";
-        font = "JetBrains Mono Nerd Font:size=9";
-        font-italic = "Victor Mono Italic:size=9";
+        font = "JetBrainsMono Nerd Font Mono:size=9";
+        font-italic = "VictorMono Nerd Font:size=9:style=italic";
       };
 
       colors = {

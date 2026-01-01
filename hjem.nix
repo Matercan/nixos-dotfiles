@@ -51,8 +51,6 @@ in
 
     files = {
       ".config/hypr".source = ./config/hypr;
-      ".config/foot".source = ./config/foot;
-      ".config/fuzzel".source = ./config/fuzzel;
       ".config/equibop/themes".source = ./config/equibop/themes;
       ".config/equibop/settings".source = ./config/equibop/settings;
       ".config/Kvantum".source = ./config/Kvantum;

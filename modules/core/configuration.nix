@@ -4,16 +4,21 @@
 }:
 
 let
-  customFonts = (
-    pkgs.stdenv.mkDerivation {
-      name = "fonts";
-      src = ../../config/fonts;
-      installPhase = ''
-        mkdir -p $out/share/fonts/truetype
-        find . -type f \( -iname "*.ttf" -o -iname "*.otf" \) -exec cp {} $out/share/fonts/truetype/ \;
-      '';
-    }
-  );
+  customFonts = pkgs.stdenv.mkDerivation {
+    name = "custom-fonts";
+    src = ../../config/fonts;
+
+    dontBuild = true;
+
+    installPhase = ''
+      mkdir -p $out/share/fonts/truetype
+      find $src -type f \( -iname "*.ttf" -o -iname "*.otf" \) -exec cp {} $out/share/fonts/truetype/ \;
+    '';
+
+    meta = {
+      description = "Custom fonts";
+    };
+  };
 in
 {
   boot.loader = {
@@ -32,7 +37,6 @@ in
     enable = true;
     theme = "Evernight";
   };
-
 
   networking.hostName = "mangowc-btw";
   networking.networkmanager.enable = true;
@@ -93,7 +97,6 @@ in
     "nix-command"
     "flakes"
   ];
-
 
   system.stateVersion = "25.11";
 }

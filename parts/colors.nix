@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ pkgs, lib, ... }:
 let
   colors =
     let
@@ -11,19 +11,15 @@ let
 
   add_hex =
     let
-      inherit (lib)
-        mapAttrs
-        mergeDeepRight
-        ;
+      inherit (lib) mapAttrs;
     in
-    attrset: mergeDeepRight attrset (mapAttrs (name: value: { hex = "#" + value; }) attrset);
+    attrset: mapAttrs (name: value: "#" + value) attrset;
 in
 {
-  inherit add_hex;
 
   options.colors =
     with lib;
-    mkOption {
+    pkgs.lib.mkOption {
       type = types.attrs;
       default = (colors);
       example = literalExpression /* nix */ ''
@@ -66,4 +62,14 @@ in
         with a # in front.
       '';
     };
+
+  options.colors-hex =
+    with lib;
+    pkgs.lib.mkOption {
+      type = types.attrs;
+      default = (add_hex colors);
+
+      description = "Colors with a hash in front of it";
+    };
+
 }
