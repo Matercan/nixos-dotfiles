@@ -61,7 +61,11 @@ Singleton {
     JsonAdapter {
       id: configOptionsJsonAdapter
 
-      property JsonObject appearance: JsonObject {}
+      property JsonObject appearance: JsonObject {
+        property JsonObject bar: JsonObject {
+          property int width: 15
+        }
+      }
       property JsonObject background: JsonObject {
         property string wallSrc: Quickshell.env("HOME") + "/.config/assets/wallpaper.png"
         property bool wallSet: true

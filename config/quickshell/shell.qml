@@ -3,7 +3,9 @@ import QtQml
 import QtQuick
 import Quickshell
 
-import qs.Background
+import qs.Modules.Background
+import qs.Modules.Bar
+
 import qs.Data
 
 ShellRoot {
@@ -13,11 +15,19 @@ ShellRoot {
     Scope {
       id: root
       required property var modelData
+
       LazyLoader {
-        active: true
-        loading: true
+        active: Config.options.background.wallSet;
 
         component: Background {
+          modelData: root.modelData
+        }
+      }
+
+      LazyLoader {
+        active: true
+
+        component: Bar {
           modelData: root.modelData
         }
       }

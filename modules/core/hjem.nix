@@ -1,4 +1,10 @@
-{ inputs, pkgs, config, ... }:
+{
+  inputs,
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 let
   zen = inputs.zen-browser.packages.${pkgs.stdenv.system}.default;
   qs = inputs.quickshell.packages.${pkgs.stdenv.system}.default;
@@ -23,7 +29,10 @@ let
 in
 {
 
-  hjem.extraModules = [ hjem-rum hjem-impure ];
+  hjem.extraModules = [
+    hjem-rum
+    hjem-impure
+  ];
   hjem.users.matercan = {
     user = "matercan";
     directory = "/home/matercan";
@@ -76,10 +85,15 @@ in
       dotsDirImpure = "/home/matercan/nixos-dotfiles/config";
     };
 
-    xdg.config.files = let 
-      dots = config.hjem.users.matercan.impure.dotsDir;
-    in {
-      "quickshell".source = dots + "/quickshell";
-    };
+    xdg.config.files =
+      let
+        dots = config.hjem.users.matercan.impure.dotsDir;
+
+        colors = builtins.toFile "qscolors.json" (builtins.toJSON config.colors);
+      in
+      {
+        "quickshell".source = dots + "/quickshell";
+        "quickshell/Data/colors.json".source = colors;
+      };
   };
 }

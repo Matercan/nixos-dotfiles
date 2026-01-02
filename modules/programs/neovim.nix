@@ -216,8 +216,8 @@ in
         {
           key = "<leader>e";
           mode = [ "n" ];
-          action = ":wq<CR>";
-          desc = "Save and quit a file";
+          action = ":q<CR>";
+          desc = "quit a buffer";
         }
         {
           key = "<leader>s";

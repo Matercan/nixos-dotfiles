@@ -1,0 +1,26 @@
+[32m  INFO[0m: Launching config: "/home/matercan/.config/quickshell/shell.qml"
+[32m  INFO[0m: Shell ID: "83044db34d2f218aba0943ecf082ebf0" Path ID "83044db34d2f218aba0943ecf082ebf0"
+[32m  INFO[0m: Saving logs to "/run/user/1000/quickshell/by-id/pyi5j7b98t/log.qslog"
+[33m  WARN[0m: Could not find color scheme "BreezeLight" falling back to BreezeLight
+[33m  WARN[0m: QSettings::value: Empty key passed
+[33m  WARN[97m quickshell.qmlscanner[0m: Ignoring unresolvable import "/home/matercan/.config/quickshell/Modules/Background" from "/home/matercan/.config/quickshell/shell.qml"
+[33m  WARN[97m quickshell.qmlscanner[0m: Ignoring unresolvable import "/home/matercan/.config/quickshell/Modules/Bar" from "/home/matercan/.config/quickshell/shell.qml"
+[32m  INFO[0m: QML tooling support enabled
+[31m ERROR[0m: Failed to load configuration
+[31m ERROR[0m:   caused by @shell.qml[7:1]: module "qs.Modules.Bar" is not installed
+[31m ERROR[0m:   caused by @shell.qml[6:1]: module "qs.Modules.Background" is not installed
+[33m  WARN[0m: QThreadStorage: entry 3 destroyed before end of thread 0x7f796267b020
+[33m  WARN[0m: QThreadStorage: entry 2 destroyed before end of thread 0x7f796267b020
+[32m  INFO[0m: Launching config: "/home/matercan/.config/quickshell/shell.qml"
+[32m  INFO[0m: Shell ID: "83044db34d2f218aba0943ecf082ebf0" Path ID "83044db34d2f218aba0943ecf082ebf0"
+[32m  INFO[0m: Saving logs to "/run/user/1000/quickshell/by-id/7rj5t8b98t/log.qslog"
+[33m  WARN[0m: Could not find color scheme "BreezeLight" falling back to BreezeLight
+[33m  WARN[0m: QSettings::value: Empty key passed
+[33m  WARN[97m quickshell.qmlscanner[0m: Ignoring unresolvable import "/home/matercan/.config/quickshell/Modules/Background" from "/home/matercan/.config/quickshell/shell.qml"
+[33m  WARN[97m quickshell.qmlscanner[0m: Ignoring unresolvable import "/home/matercan/.config/quickshell/Modules/Bar" from "/home/matercan/.config/quickshell/shell.qml"
+[32m  INFO[0m: QML tooling support enabled
+[31m ERROR[0m: Failed to load configuration
+[31m ERROR[0m:   caused by @shell.qml[7:1]: module "qs.Modules.Bar" is not installed
+[31m ERROR[0m:   caused by @shell.qml[6:1]: module "qs.Modules.Background" is not installed
+[33m  WARN[0m: QThreadStorage: entry 3 destroyed before end of thread 0x7f09939f6020
+[33m  WARN[0m: QThreadStorage: entry 2 destroyed before end of thread 0x7f09939f6020
