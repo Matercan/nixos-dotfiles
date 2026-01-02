@@ -60,7 +60,6 @@ in
       ".config/Kvantum".source = ../../config/Kvantum;
       ".config/fastfetch".source = ../../config/fastfetch;
       ".config/assets".source = ../../config/assets;
-      ".config/quickshell".source = ../../config/quickshell;
     };
 
     environment.sessionVariables = {
