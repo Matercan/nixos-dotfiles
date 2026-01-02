@@ -12,8 +12,7 @@ Singleton {
   property bool ready: false
   property int readWriteDelay: 50 // miliseconds
   property bool blockWrites: false
-  property string filePath: Quickshell.env("HOME") + "/.config/quickshell/Data/config.json";
-
+  property string dirPath: Quickshell.env("HOME") + "/.config/quickshell/Data/"
 
   function setNestedValue(nestedKey: string, value) {
     let keys = nestedKey.split('.');
@@ -45,7 +44,7 @@ Singleton {
 
   FileView {
     id: configFileView
-    path: root.filePath
+    path: root.dirPath + "config.json"
     watchChanges: true
 
     blockWrites: root.blockWrites
@@ -70,6 +69,55 @@ Singleton {
         property string wallSrc: Quickshell.env("HOME") + "/.config/assets/wallpaper.png"
         property bool wallSet: true
       }
+    }
+  }
+
+  FileView {
+    id: colorsFileView
+    path: root.dirPath + "colors.json"
+    watchChanges: true
+
+    blockWrites: root.blockWrites
+    onFileChanged: reload()
+    onAdapterChanged: writeAdapter()
+    onLoaded: root.ready = true
+    onLoadFailed: err => {
+      if (err == FileViewError.FileNotFound) {
+        writeAdapter();
+      }
+    }
+
+    JsonAdapter {
+      id: colorsOptionsAdapter
+
+      property string background
+      property string foreground
+      property string text
+      property string border
+      property string accent
+      property string secondary
+      property string secondary_text
+      property string selection
+      property string slection_background
+
+      property string regular0
+      property string regular1
+      property string regular2
+      property string regular3
+      property string regular4
+      property string regular5
+      property string regular6
+      property string regular7
+      property string regular8
+
+      property string bright0
+      property string bright1
+      property string bright2
+      property string bright3
+      property string bright4
+      property string bright5
+      property string bright6
+      property string bright7
     }
   }
 }

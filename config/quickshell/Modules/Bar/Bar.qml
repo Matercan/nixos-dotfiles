@@ -15,4 +15,5 @@ PanelWindow {
   }
 
   implicitWidth: Config.options.appearance.bar.width
+
 }
