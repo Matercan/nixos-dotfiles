@@ -16,6 +16,10 @@ WlrLayershell {
     left: true
   }
 
+  margins {
+    left: -20
+  }
+
   color: "transparent"
   exclusionMode: ExclusionMode.Ignore
   focusable: false

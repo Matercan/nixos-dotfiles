@@ -12,10 +12,5 @@ let
 in
 {
   programs.mango.enable = true;
-
-  hjem.users.matercan.files = {
-    ".config/mango/config.conf".source = ../../config/mango/config.conf;
-
-    ".config/mango/colors.conf".source = mangoColors;
-  };
+  hjem.users.matercan.files.".config/mango/colors.conf".source = mangoColors;
 }

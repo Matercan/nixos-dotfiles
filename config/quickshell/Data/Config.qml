@@ -9,6 +9,7 @@ Singleton {
   id: root
 
   property alias options: configOptionsJsonAdapter
+  property alias colors: colorsOptionsAdapter
   property bool ready: false
   property int readWriteDelay: 50 // miliseconds
   property bool blockWrites: false

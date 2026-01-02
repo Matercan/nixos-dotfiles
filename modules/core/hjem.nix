@@ -47,6 +47,7 @@ in
       grim
       slurp
       wayfreeze
+      swappy
 
       zen
       obs-studio
@@ -91,6 +92,7 @@ in
       in
       {
         "quickshell".source = dots + "/quickshell";
+        "mango/config.conf".source = dots + "/mango/config.conf"; 
       };
   };
 }
