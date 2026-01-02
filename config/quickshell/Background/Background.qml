@@ -28,18 +28,29 @@ WlrLayershell {
   Wallpaper {
     id: wallpaper
 
-    anchors.fill: parseInt
+    anchors.fill: parent
     source: ""
 
     Component.onCompleted: {
-      source = Config.options.background.wallSrc;
 
+      if (Config.ready) {
+        wallpaper.source = Config.options.background.wallSrc;
+      }
+
+      Config.readyChanged.connect(() => {
+        if (Config.ready) {
+          wallpaper.source = Config.options.background.wallSrc;
+        }
+      });
+
+      // Connect to wallSrc changes
       Config.options.background.wallSrcChanged.connect(() => {
         if (walAnim.running) {
           walAnim.complete();
         }
         animatingWal.source = Config.options.background.wallSrc;
       });
+
       animatingWal.statusChanged.connect(() => {
         if (animatingWal.status == Image.Ready) {
           walAnim.start();

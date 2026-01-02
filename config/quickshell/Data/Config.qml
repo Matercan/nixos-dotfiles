@@ -12,7 +12,8 @@ Singleton {
   property bool ready: false
   property int readWriteDelay: 50 // miliseconds
   property bool blockWrites: false
-  property string filePath: Quickshell.env("HOME") + "/.config/quickshell/Data/config.json"
+  property string filePath: Quickshell.env("HOME") + "/.config/quickshell/Data/config.json";
+
 
   function setNestedValue(nestedKey: string, value) {
     let keys = nestedKey.split('.');

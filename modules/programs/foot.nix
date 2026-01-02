@@ -20,6 +20,7 @@ in
         background = colors.background;
         foreground = colors.text;
         selection-background = colors.selection_background;
+        alpha = 0.8;
 
         regular0 = colors.regular0;
         regular1 = colors.regular1;
