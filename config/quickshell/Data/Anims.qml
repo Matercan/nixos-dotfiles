@@ -1,6 +1,6 @@
 pragma Singleton
 
-import qs.globals
+import qs.Data
 import Quickshell
 import QtQuick
 

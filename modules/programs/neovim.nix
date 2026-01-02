@@ -242,6 +242,7 @@ in
           setupOpts = {
             flavour = "macchiato";
             term_colors = true;
+            transparent = true;
 
             styles.comments = [ "italic" ];
             styles.keywords = [
