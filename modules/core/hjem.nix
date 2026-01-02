@@ -1,6 +1,8 @@
 { inputs, pkgs, ... }:
 let
   zen = inputs.zen-browser.packages.${pkgs.stdenv.system}.default;
+  qs = inputs.quickshell.packages.${pkgs.stdenv.system}.default;
+
   cursor = pkgs.catppuccin-cursors.macchiatoLavender;
   gtk-theme = pkgs.gnome-themes-extra;
 
@@ -38,11 +40,11 @@ in
       wayfreeze
 
       zen
-      quickshell
       obs-studio
       equibop
       protonvpn-gui
       prismlauncher
+      qs
 
       gtk-theme
       cursor

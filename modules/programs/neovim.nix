@@ -248,6 +248,7 @@ in
               "italic"
               "bold"
             ];
+            styles.operators = [ "italic" ];
 
             integrations = {
               gitsigns = true;
@@ -332,8 +333,6 @@ in
             -- Float windows (for documentation)
             ${hl}(0, "NormalFloat", { bg = "none" })
             ${hl}(0, "FloatBorder", { bg = "none", fg = macchiato.blue })
-
-
           '';
         };
 

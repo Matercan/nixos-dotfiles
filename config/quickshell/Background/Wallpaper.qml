@@ -1,6 +1,8 @@
 import QtQml
 import QtQuick
 
+import qs.Config
+
 AnimatedImage {
   antialiasing: true
   asynchronous: true
@@ -8,5 +10,5 @@ AnimatedImage {
   layer.enabled: true
   retainWhileLoading: true
   smooth: true
-  source: Config.data.wallSrc
+  source: Config.options.background.wallpaperSrc
 }
