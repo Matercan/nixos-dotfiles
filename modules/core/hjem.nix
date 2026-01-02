@@ -88,12 +88,9 @@ in
     xdg.config.files =
       let
         dots = config.hjem.users.matercan.impure.dotsDir;
-
-        colors = builtins.toFile "qscolors.json" (builtins.toJSON config.colors);
       in
       {
         "quickshell".source = dots + "/quickshell";
-        "quickshell/Data/colors.json".source = colors;
       };
   };
 }
