@@ -304,6 +304,7 @@ in
             macchiato = require("catppuccin.palettes").get_palette "macchiato"
 
             ${hl}(0, "Normal", { bg = "none" })  
+            ${hl}(0, "NormalNC", { bg = "none" })
 
             -- Telescope (add TelescopeSelection)
             vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
@@ -330,8 +331,8 @@ in
             ${hl}(0, "PmenuBorder", { bg = "none", fg = macchiato.blue }) 
 
             -- Completion item kinds (icons)
-            ${hl}(0, "CmpItemKind", { fg = macchiato.red })
-            ${hl}(0, "CmpItemMenu", { fg = macchiato.lavender })
+            ${hl}(0, "CmpItemKind", { bg = "none", fg = macchiato.red })
+            ${hl}(0, "CmpItemMenu", { bg = "none", fg = macchiato.lavender })
 
             -- Float windows (for documentation)
             ${hl}(0, "NormalFloat", { bg = "none" })

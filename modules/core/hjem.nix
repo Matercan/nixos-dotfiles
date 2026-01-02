@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, config, ... }:
 let
   zen = inputs.zen-browser.packages.${pkgs.stdenv.system}.default;
   qs = inputs.quickshell.packages.${pkgs.stdenv.system}.default;
@@ -71,6 +71,16 @@ in
       XCURSOR_SIZE = "24";
     };
 
-    impure.enable = true;
+    impure = {
+      enable = true;
+      dotsDir = "${../../config}";
+      dotsDirImpure = "/home/matercan/nixos-dotfiles/config";
+    };
+
+    xdg.config.files = let 
+      dots = config.hjem.users.matercan.impure.dotsDir;
+    in {
+      "quickshell".source = dots + "/quickshell";
+    };
   };
 }

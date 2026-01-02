@@ -66,7 +66,9 @@ in
       "fzf-tab".source = "${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh";
 
       "zsh-nix-completions".source =  "${pkgs.nix-zsh-completions}/share/zsh/site-functions";
-      "zsh-autocompletions".source = "${pkgs.zsh-completions}/share/zsh/site-functions";
+      "zsh-completions".source = "${pkgs.zsh-completions}/share/zsh/site-functions";
+
+      "zsh-autocomplete".source = "${pkgs.zsh-autocomplete}/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh";
       "zsh-syntax-highlighting".source =
         "${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
       "zsh-powerlevel10k".source =
