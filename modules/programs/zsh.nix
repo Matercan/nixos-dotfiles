@@ -48,23 +48,25 @@ in
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
       zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
       zstyle ':completion:*' menu no
-      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls ${co} $realpath'
+      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza ${co} $realpath'
+      zstyle ':fzf-tab:*' use-fzf-default-opts yes
+
+      export FZF_DEFAULT_COMMAND="rg --files --follow --hiddden --glob '!.git'"
+      export FZF_DEFAULT_OPTS='--highlight-line --info=inline-right --ansi --layout=reverse --border=none'
+      export FZF_CTRL_T_OPTS="--preview='bat {}' --height=100% --bind shift-up:preview-page-up,shift-down:preview-page-down"
 
       autoload -Uz compinit && compinit
 
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-      eval "$(fzf --zsh)"
-      eval "$(zoxide init --cmd cd zsh)"
 
       export PATH="$PATH:$HOME/.local/bin"
-
     '';
 
     plugins = {
       "fzf-tab".source = "${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh";
 
-      "zsh-nix-completions".completions = [ "${pkgs.nix-zsh-completions}/share/zsh/site-functions" ];
-      "zsh-autocompletions".completions = [ "${pkgs.zsh-completions}/share/zsh/site-functions" ];
+      "zsh-nix-completions".source =  "${pkgs.nix-zsh-completions}/share/zsh/site-functions";
+      "zsh-autocompletions".source = "${pkgs.zsh-completions}/share/zsh/site-functions";
       "zsh-syntax-highlighting".source =
         "${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
       "zsh-powerlevel10k".source =

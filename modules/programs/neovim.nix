@@ -119,6 +119,10 @@ in
 
       };
 
+      vim.ui.borders = {
+        globalStyle = "single";
+      };
+
       vim.luaConfigRC.replace = /* lua */ ''
         ${km}('n', '<leader>rh', function()
             vim.ui.input({ prompt = 'Find: ' }, function(find_pattern)
@@ -138,7 +142,7 @@ in
         local pid = vim.fn.getpid()
 
         --  Borders for floating windows
-        local BORDER_STYLE = "rounded"
+        local BORDER_STYLE = "single"
 
         vim.lsp.handlers["textDocument/hover"] =
             vim.lsp.with(vim.lsp.handlers.hover, { border = BORDER_STYLE })
