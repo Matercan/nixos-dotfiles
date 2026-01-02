@@ -12,7 +12,7 @@ Singleton {
   property bool ready: false
   property int readWriteDelay: 50 // miliseconds
   property bool blockWrites: false
-  property string filePath: "./config/config.json"
+  property string filePath: Quickshell.env("HOME") + "/.config/quickshell/Data/config.json"
 
   function setNestedValue(nestedKey: string, value) {
     let keys = nestedKey.split('.');
@@ -62,7 +62,8 @@ Singleton {
 
       property JsonObject appearance: JsonObject {}
       property JsonObject background: JsonObject {
-        property string wallpaperSrc: "../assets/wallpaper.png"
+        property string wallSrc: Quickshell.env("HOME") + "/.config/assets/wallpaper.png"
+        property bool wallSet: true
       }
     }
   }

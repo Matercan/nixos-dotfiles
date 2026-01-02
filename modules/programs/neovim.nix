@@ -304,18 +304,20 @@ in
 
             ${hl}(0, "Normal", { bg = "none" })  
 
-            -- Telescope
-            ${hl}(0, "TelescopeNormal", {bg = "none" })
-            ${hl}(0, "TelescopeBorder", {bg = "none", fg = macchiato.blue })
+            -- Telescope (add TelescopeSelection)
+            vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
+            vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "none", fg = macchiato.blue })
+            vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = "none" })
+            vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "none", fg = macchiato.blue })
+            vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bg = "none", fg = macchiato.blue })
+            vim.api.nvim_set_hl(0, "TelescopeResultsNormal", { bg = "none" })
+            vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { bg = "none", fg = macchiato.blue })
+            vim.api.nvim_set_hl(0, "TelescopePreviewNormal", { bg = "none" })
+            vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { bg = "none", fg = macchiato.blue })
 
-            ${hl}(0, "TelescopePromptNormal", { bg = "none" })
-            ${hl}(0, "TelescopePromptBorder", { bg = "none", fg = macchiato.blue })
-            ${hl}(0, "TelescopePromptTitle", { bg = "none", fg = macchiato.blue })
-            ${hl}(0, "TelescopeResultsNormal", { bg = "none" })
-            ${hl}(0, "TelescopeResultsBorder", { bg = "none", fg = macchiato.blue })
-            ${hl}(0, "TelescopePreviewNormal", { bg = "none" })
-            ${hl}(0, "TelescopePreviewBorder", { bg = "none", fg = macchiato.blue }) 
-
+            -- Add these for full transparency
+            vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = "none", fg = macchiato.peach, bold = true })
+            vim.api.nvim_set_hl(0, "TelescopeSelectionCaret", { bg = "none", fg = macchiato.peach })
             -- Line numbers                    
             ${hl}(0, "CursorLineNr", { fg = macchiato.peach, bold = true, })
             ${hl}(0, "Cursor", { fg = macchiato.lavender, })
@@ -492,51 +494,51 @@ in
           package = plug.lualine-nvim;
 
           after = /* lua */ ''
-          require('lualine').setup({
-              options = {
-                icons_enabled = true,
-                theme = 'auto',
-                component_separators = { left = '|', right = '|'},
-                section_separators = { left = "", right = ""},
-                disabled_filetypes = {
-                  statusline = {},
-                  winbar = {},
-                },
-                ignore_focus = {},
-                always_divide_middle = true,
-                globalstatus = false,
-                refresh = {
-                  statusline = 1000,
-                  tabline = 1000,
-                  winbar = 1000,
-                }
-              },
-              sections = {
-                lualine_a = {'mode'},
-                lualine_b = {'branch'},
-                lualine_c = {
-                  {
-                    'filename',
-                    path = 0, -- just filename
+            require('lualine').setup({
+                options = {
+                  icons_enabled = true,
+                  theme = 'auto',
+                  component_separators = { left = '|', right = '|'},
+                  section_separators = { left = "", right = ""},
+                  disabled_filetypes = {
+                    statusline = {},
+                    winbar = {},
+                  },
+                  ignore_focus = {},
+                  always_divide_middle = true,
+                  globalstatus = false,
+                  refresh = {
+                    statusline = 1000,
+                    tabline = 1000,
+                    winbar = 1000,
                   }
                 },
-                lualine_x = {'encoding', 'diff', 'filetype'},
-                lualine_y = {'location'},
-                lualine_z = {'progress'}
-              },
-              inactive_sections = {
-                lualine_a = {},
-                lualine_b = {},
-                lualine_c = {'filename'},
-                lualine_x = {'location'},
-                lualine_y = {},
-                lualine_z = {}
-              },
-              tabline = {},
-              winbar = {},
-              inactive_winbar = {},
-              extensions = {}
-            })
+                sections = {
+                  lualine_a = {'mode'},
+                  lualine_b = {'branch'},
+                  lualine_c = {
+                    {
+                      'filename',
+                      path = 0, -- just filename
+                    }
+                  },
+                  lualine_x = {'encoding', 'diff', 'filetype'},
+                  lualine_y = {'location'},
+                  lualine_z = {'progress'}
+                },
+                inactive_sections = {
+                  lualine_a = {},
+                  lualine_b = {},
+                  lualine_c = {'filename'},
+                  lualine_x = {'location'},
+                  lualine_y = {},
+                  lualine_z = {}
+                },
+                tabline = {},
+                winbar = {},
+                inactive_winbar = {},
+                extensions = {}
+              })
           '';
         };
 

@@ -51,7 +51,7 @@ in
       zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza ${co} $realpath'
       zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
-      export FZF_DEFAULT_COMMAND="rg --files --follow --hiddden --glob '!.git'"
+      export FZF_DEFAULT_COMMAND="rg --files --follow --hidden --glob '!.git'"
       export FZF_DEFAULT_OPTS='--highlight-line --info=inline-right --ansi --layout=reverse --border=none'
       export FZF_CTRL_T_OPTS="--preview='bat {}' --height=100% --bind shift-up:preview-page-up,shift-down:preview-page-down"
 
