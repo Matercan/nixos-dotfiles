@@ -1,19 +1,14 @@
-{ config, pkgs, lib }:
-let
-  writeColorsScript = pkgs.writeShellScript {
-    name = "copy nix files";
-    text = /* shell */ ''
-      #! ${pkgs.runTimeShell}
-      mkdir -p /home/matercan/nixos-dotfiles/config/quickshell/Data
-      cp /home/matercan/nixos-dotfiles/parts/colors.json /home/matercan/nixos-dotfiles/config/quickshell/Data/colors.json
-      EOF
-    '';
-
-    executabale = true;
-  };
-in
 {
-  system.activationScripts.writeQuickshellColors = ''
-    ${writeColorsScript}
-  '';
+  systemd.user.services.writeQuickshellColors = {
+    enable = true;
+    wantedBy = [ "default.target" ];
+    description = "Fills out colors for quickshell";
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = builtins.toFile "qsc" ''
+        #! /bin/sh
+          cp /home/matercan/nixos-dotfiles/parts/colors.json /home/matercan/nixos-dotfiles/config/quickshell/Data/colors.json
+      '';
+    };
+  };
 }
