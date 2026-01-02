@@ -11,33 +11,20 @@
         ...
       }:
       {
-        imports = [
-          # external flake logic
-        ];
         flake = {
           nixosConfigurations.mangowc-btw = inputs.nixpkgs.lib.nixosSystem {
             specialArgs = { inherit inputs; };
             system = "x86_64-linux";
             modules = [
-              ./hjem.nix
               ./parts
+              ./modules
 
               inputs.nvf.nixosModules.default
               inputs.hjem.nixosModules.default
               inputs.honkai-railway-grub-theme.nixosModules."x86_64-linux".default
               inputs.spicetify-nix.nixosModules.spicetify
               inputs.mango.nixosModules.mango
-              {
-                programs.mango.enable = true;
-              }
-            ]
-            ++ (
-              let
-                inherit (inputs.nixpkgs.lib) filter hasSuffix filesystem;
-                recursiveImport = path: filter (hasSuffix ".nix") (filesystem.listFilesRecursive path);
-              in
-              recursiveImport ./modules
-            );
+            ];
           };
         };
         systems = [

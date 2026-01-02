@@ -49,11 +49,11 @@ in
     ];
 
     files = {
-      ".config/equibop/themes".source = ./config/equibop/themes;
-      ".config/equibop/settings".source = ./config/equibop/settings;
-      ".config/Kvantum".source = ./config/Kvantum;
-      ".config/fastfetch".source = ./config/fastfetch;
-      ".config/assets".source = ./config/assets;
+      ".config/equibop/themes".source = ../../config/equibop/themes;
+      ".config/equibop/settings".source = ../../config/equibop/settings;
+      ".config/Kvantum".source = ../../config/Kvantum;
+      ".config/fastfetch".source = ../../config/fastfetch;
+      ".config/assets".source = ../../config/assets;
     };
 
     environment.sessionVariables = {
@@ -62,7 +62,7 @@ in
       HYPRCURSOR_THEME = "catppuccin-macchiato-lavender-cursors";
       XCURSOR_THEME = "catppuccin-macchiato-lavender-cursors";
       XCURSOR_SIZE = "24";
-          };
+    };
 
     rum = {
       misc.gtk = {

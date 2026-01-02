@@ -1,5 +1,4 @@
-{ ...}: {
-  imports = [
-    ./colors.nix
-  ]; 
+{ ... }:
+{
+  imports = [ ./colors.nix ];
 }
