@@ -17,6 +17,17 @@ let
     doCheck = false;
   };
 
+  fzf-native-from-source = pkgs.vimUtils.buildVimPlugin {
+    name = "telescope-fzf-native";
+    src = inputs.telescope-fzf-native;
+    doCheck = false;
+    buildPhase = /* shell */ ''make '';
+    nativeBuildInputs = [
+      pkgs.gnumake
+      pkgs.gcc
+    ];
+  };
+
   dependsPlugin = {
     lazy = false;
     priority = 1001;
@@ -39,6 +50,7 @@ in
         shellcmdflag = "-c";
         termguicolors = true;
         encoding = "utf-8";
+        winborder = "single";
 
         foldcolumn = "1";
         foldlevel = 99;
@@ -66,6 +78,13 @@ in
         undolevels = 100000;
         undoreload = 100000;
       };
+
+      vim.luaConfigRC.opts = /* lua */ ''
+        vim.opt.clipboard = "unnamedplus"
+        vim.opt.splitright = true
+        vim.opt.winborder = "single"
+        vim.opt.foldmethod = "expr"
+      '';
 
       vim.treesitter = {
         enable = true;
@@ -181,7 +200,6 @@ in
             }
           }
         })
-
       '';
 
       vim.languages = {
@@ -211,6 +229,7 @@ in
 
       vim.extraPlugins = {
         telescope-cmdline-nvim.package = cmdline-from-source;
+        telescope-fzf-native.package = fzf-native-from-source;
       };
 
       vim.lazy.plugins = {
@@ -327,6 +346,15 @@ in
           // {
             package = plug.dressing-nvim;
             setupModule = "dressing";
+
+            setupOpts = {
+              input.border = "single";
+              select.backend = [
+                "telescope"
+                "fzf"
+                "builtin"
+              ];
+            };
           }
         );
 
@@ -465,34 +493,51 @@ in
           package = plug.lualine-nvim;
 
           after = /* lua */ ''
-            require('lualine').setup {
+          require('lualine').setup({
               options = {
-                component_separators = "",
-                section_separators = { left = '', right = '' },
+                icons_enabled = true,
+                theme = 'auto',
+                component_separators = { left = '|', right = '|'},
+                section_separators = { left = "", right = ""},
+                disabled_filetypes = {
+                  statusline = {},
+                  winbar = {},
+                },
+                ignore_focus = {},
+                always_divide_middle = true,
+                globalstatus = false,
+                refresh = {
+                  statusline = 1000,
+                  tabline = 1000,
+                  winbar = 1000,
+                }
               },
               sections = {
-                lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
-                lualine_b = { 'filename', 'branch' },
+                lualine_a = {'mode'},
+                lualine_b = {'branch'},
                 lualine_c = {
-                  '%=', --[[ add your center components here in place of this comment ]]
+                  {
+                    'filename',
+                    path = 0, -- just filename
+                  }
                 },
-                lualine_x = {},
-                lualine_y = { 'filetype', 'progress' },
-                lualine_z = {
-                  { 'location', separator = { right = '' }, left_padding = 2 },
-                },
+                lualine_x = {'encoding', 'diff', 'filetype'},
+                lualine_y = {'location'},
+                lualine_z = {'progress'}
               },
               inactive_sections = {
-                lualine_a = { 'filename' },
+                lualine_a = {},
                 lualine_b = {},
-                lualine_c = {},
-                lualine_x = {},
+                lualine_c = {'filename'},
+                lualine_x = {'location'},
                 lualine_y = {},
-                lualine_z = { 'location' },
+                lualine_z = {}
               },
               tabline = {},
-              extensions = {},
-            }
+              winbar = {},
+              inactive_winbar = {},
+              extensions = {}
+            })
           '';
         };
 
@@ -503,10 +548,21 @@ in
           setupModule = "telescope";
 
           setupOpts = {
-            exntentions.cmdline = {
+            defaults.borderchars = [
+              "─"
+              "│"
+              "─"
+              "│"
+              "┌"
+              "┐"
+              "┘"
+              "└"
+            ];
+
+            extensions.cmdline = {
               picker.layout_config = {
-                width = 480;
-                height = 200;
+                width = 100;
+                height = 50;
               };
               mappings = {
                 complete = "<Tab>";
@@ -525,10 +581,19 @@ in
 
               overseer.enable = true;
             };
+
+            extensions.fzf = {
+              fuzzy = true;
+              override_generic_sorter = true;
+              override_file_sorter = true;
+              case_mode = "smart_case";
+            };
           };
 
           after = /* lua */ ''
             local builtin = require("telescope.builtin")
+
+            require('telescope').load_extension('fzf')
 
             ${km}('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
             ${km}('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })

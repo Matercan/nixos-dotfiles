@@ -5,6 +5,7 @@ let
   gtk-theme = pkgs.gnome-themes-extra;
 
   hjem-rum = inputs.hjem-rum.hjemModules.default;
+  hjem-impure = inputs.hjem-impure.hjemModules.default;
 
   ns = (
     pkgs.writeShellApplication {
@@ -20,7 +21,7 @@ let
 in
 {
 
-  hjem.extraModules = [ hjem-rum ];
+  hjem.extraModules = [ hjem-rum hjem-impure ];
   hjem.users.matercan = {
     user = "matercan";
     directory = "/home/matercan";
@@ -30,7 +31,10 @@ in
       ripgrep
       fzf
       zoxide
+
       wl-clipboard
+      grim
+      slurp
       wayfreeze
 
       zen
@@ -54,6 +58,7 @@ in
       ".config/Kvantum".source = ../../config/Kvantum;
       ".config/fastfetch".source = ../../config/fastfetch;
       ".config/assets".source = ../../config/assets;
+      ".config/quickshell".source = ../../config/quickshell;
     };
 
     environment.sessionVariables = {
@@ -64,15 +69,6 @@ in
       XCURSOR_SIZE = "24";
     };
 
-    rum = {
-      misc.gtk = {
-        enable = true;
-        settings = {
-          theme-name = "Adwaita-dark";
-          application-prefer-dark-theme = true;
-          font-name = "Sans 11";
-        };
-      };
-    };
+    impure.enable = true;
   };
 }

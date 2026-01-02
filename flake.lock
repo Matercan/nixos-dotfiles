@@ -113,6 +113,29 @@
         "type": "github"
       }
     },
+    "hjem-impure": {
+      "inputs": {
+        "hjem": [
+          "hjem"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1761137035,
+        "narHash": "sha256-addwMZGxcaOjvg64AXfWsXsXinxzjSS8x8h/CENOU6U=",
+        "owner": "Rexcrazy804",
+        "repo": "hjem-impure",
+        "rev": "9a58b060e9383bfb6b2b3470f9606fdd654469f3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Rexcrazy804",
+        "repo": "hjem-impure",
+        "type": "github"
+      }
+    },
     "hjem-rum": {
       "inputs": {
         "hjem": [
@@ -383,6 +406,7 @@
       "inputs": {
         "flake-parts": "flake-parts",
         "hjem": "hjem",
+        "hjem-impure": "hjem-impure",
         "hjem-rum": "hjem-rum",
         "home-manager": "home-manager",
         "honkai-railway-grub-theme": "honkai-railway-grub-theme",
@@ -391,6 +415,7 @@
         "nvf": "nvf",
         "spicetify-nix": "spicetify-nix",
         "telescope-cmdline-nvim": "telescope-cmdline-nvim",
+        "telescope-fzf-native": "telescope-fzf-native",
         "zen-browser": "zen-browser"
       }
     },
@@ -552,6 +577,22 @@
       "original": {
         "owner": "jonarrien",
         "repo": "telescope-cmdline.nvim",
+        "type": "github"
+      }
+    },
+    "telescope-fzf-native": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1762521376,
+        "narHash": "sha256-ChEM4jJonAE4qXd/dgTu2mdlpNBj5rEdpA8TgR38oRM=",
+        "owner": "nvim-telescope",
+        "repo": "telescope-fzf-native.nvim",
+        "rev": "6fea601bd2b694c6f2ae08a6c6fab14930c60e2c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-telescope",
+        "repo": "telescope-fzf-native.nvim",
         "type": "github"
       }
     },

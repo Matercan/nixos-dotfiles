@@ -63,6 +63,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.hjem.follows = "hjem";
     };
+    hjem-impure = {
+      url = "github:Rexcrazy804/hjem-impure";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.hjem.follows = "hjem";
+    };
 
     nvf = {
       url = "github:notashelf/nvf";
@@ -74,6 +79,9 @@
 
     telescope-cmdline-nvim.url = "github:jonarrien/telescope-cmdline.nvim";
     telescope-cmdline-nvim.flake = false;
+
+    telescope-fzf-native.url = "github:nvim-telescope/telescope-fzf-native.nvim";
+    telescope-fzf-native.flake = false;
 
   };
 
