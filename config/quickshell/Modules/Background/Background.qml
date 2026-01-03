@@ -1,3 +1,5 @@
+/* Copied this compeltedly from rexi, ty oomfie <3 */
+
 import QtQuick
 import Quickshell
 import Quickshell.Wayland
@@ -82,6 +84,7 @@ WlrLayershell {
       id: walAnim
       target: animatingRect
 
+      property: "width"
       duration: MaterialEasing.emphasizedTime * 5
       from: 0
       to: root.screen.width

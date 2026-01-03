@@ -1,21 +1,42 @@
+pragma ComponentBehavior: Bound
 import QtQuick
+import QtQuick.Layouts
+
 import Quickshell
 
 import qs.Data
-import qs.Modules.Common.Functions
 
 PanelWindow {
+  id: root
   required property var modelData
+  property var config: Config.options.appearance
 
   screen: modelData
 
   anchors {
     left: true
     top: true
-    bottom: true
+    right: true
   }
 
-  implicitWidth: Config.options.appearance.bar.width
+  implicitHeight: root.config.bar.width
 
-  color: Colors.applyAlpha("#ffffff", 0.2)
+  color: Config.colors.background
+
+  RowLayout {
+    Loader {
+      Layout.preferredWidth: children[0].width
+      Layout.preferredHeight: children[0].height
+      Layout.alignment: Qt.AlignCenter
+      Layout.leftMargin: root.config.padding.small
+
+      active: true
+
+      sourceComponent: WkWidget {
+        anchors.centerIn: parent
+
+        screen: root.screen
+      }
+    }
+  }
 }

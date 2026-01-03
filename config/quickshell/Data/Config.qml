@@ -63,12 +63,33 @@ Singleton {
 
       property JsonObject appearance: JsonObject {
         property JsonObject bar: JsonObject {
-          property int width: 15
+          property int width
+
+          property bool wkEnabled
+          property int wkWidth
+        }
+
+        property JsonObject spacing: JsonObject {
+          property int small: 6
+          property int medium: 11
+          property int large: 20
+        }
+
+        property JsonObject size: JsonObject {
+          property int small: 5
+          property int medium: 6
+          property int large: 7
+        }
+
+        property JsonObject padding: JsonObject {
+          property int small :4
+          property int medium: 10
+          property int large: 15
         }
       }
       property JsonObject background: JsonObject {
-        property string wallSrc: Quickshell.env("HOME") + "/.config/assets/wallpaper.png"
-        property bool wallSet: true
+        property string wallSrc
+        property bool wallSet
       }
     }
   }

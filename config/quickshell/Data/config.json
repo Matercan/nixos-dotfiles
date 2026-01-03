@@ -1,5 +1,9 @@
 {
     "appearance": {
+        "bar": {
+            "width": 15,
+            "wkEnabled": true
+        }
     },
     "background": {
         "wallSet": true,
