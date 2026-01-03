@@ -66,17 +66,15 @@ Rectangle {
 
         property bool active: Mango.activeTags.find(x => x.tag === icon.modelData && root.screen.name === x.mon) != null
 
-        NumberAnimation {
-          target: icon
-          property: "rotation"
-          from: 0
-          to: 359
-          loops: Animation.Infinite
-          duration: 1000
-          running: icon.active
+        rotation: 45
+        color: active ? Config.colors.accent : Config.colors.foreground
+        radius: active ? height / 2 : 0
+
+        Behavior on radius {
+          Anim {}
         }
 
-        color: active ? Config.colors.accent : Config.colors.foreground
+        antialiasing: true
       }
     }
   }
