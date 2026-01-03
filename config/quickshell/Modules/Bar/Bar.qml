@@ -28,7 +28,6 @@ PanelWindow {
       Layout.preferredWidth: children[0].width
       Layout.preferredHeight: children[0].height
       Layout.alignment: Qt.AlignCenter
-      Layout.leftMargin: root.config.padding.small
 
       active: true
 
@@ -37,6 +36,16 @@ PanelWindow {
 
         screen: root.screen
       }
+    }
+
+    Loader {
+      active: true
+      asynchronous: true
+
+      Layout.preferredWidth: children[0].width
+      Layout.preferredHeight: children[0].height
+      Layout.alignment: Qt.AlignCenter
+
     }
   }
 }

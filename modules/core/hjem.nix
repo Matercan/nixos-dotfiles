@@ -49,8 +49,6 @@ in
       wayfreeze
       swappy
 
-      xdg-desktop-portal
-      xdg-desktop-portal-wlr
 
       zen
       obs-studio

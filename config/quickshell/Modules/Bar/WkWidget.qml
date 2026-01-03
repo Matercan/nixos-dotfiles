@@ -4,6 +4,7 @@ import Quickshell
 
 import qs.Data
 import qs.Services
+import qs.Generics
 
 Rectangle {
   id: root
@@ -33,12 +34,6 @@ Rectangle {
         }
 
         const open = monitor.filter(t => t.numWindows > 0);
-
-        if (open.length === 0) {
-          model.values = [];
-          return;
-        }
-
         const lastWindow = open[open.length - 1];
         const result = [];
 
@@ -72,6 +67,12 @@ Rectangle {
 
         Behavior on radius {
           Anim {}
+        }
+        Behavior on color {
+          ColorAnimation {
+            duration: MaterialEasing.emphasizedTime
+            easing.bezierCurve: MaterialEasing.emphasized
+          }
         }
 
         antialiasing: true

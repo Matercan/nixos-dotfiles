@@ -66,6 +66,9 @@ in
     foot
     quickshell
 
+    xdg-desktop-portal
+    xdg-desktop-portal-wlr
+
     (appimage-run.override {
       extraPkgs = pkgs: [ pkgs.icu ];
     })
