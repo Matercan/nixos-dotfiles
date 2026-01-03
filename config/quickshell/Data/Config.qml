@@ -70,21 +70,21 @@ Singleton {
         }
 
         property JsonObject spacing: JsonObject {
-          property int small: 6
-          property int medium: 11
-          property int large: 20
+          property int small
+          property int medium
+          property int large
         }
 
         property JsonObject size: JsonObject {
-          property int small: 5
-          property int medium: 6
-          property int large: 7
+          property int small
+          property int medium
+          property int large
         }
 
         property JsonObject padding: JsonObject {
-          property int small :4
-          property int medium: 10
-          property int large: 15
+          property int small
+          property int medium
+          property int large
         }
       }
       property JsonObject background: JsonObject {
