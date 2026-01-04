@@ -35,6 +35,11 @@ Rectangle {
 
         const open = monitor.filter(t => t.numWindows > 0);
         const lastWindow = open[open.length - 1];
+        if (!open || !lastWindow) {
+          model.values = [];
+          return;
+        }
+
         const result = [];
 
         for (let i = 1; i <= lastWindow.tag; i++) {
@@ -57,13 +62,13 @@ Rectangle {
         required property int modelData
 
         implicitWidth: height
-        implicitHeight: row.height / (2 * Math.SQRT2)
+        implicitHeight: active ? row.height / (2 * Math.SQRT2) : row.height / 2.5
 
         property bool active: Mango.activeTags.find(x => x.tag === icon.modelData && root.screen.name === x.mon) != null
 
         rotation: 45
         color: active ? Config.colors.accent : Config.colors.foreground
-        radius: active ? height / 2 : 0
+        radius: active ? 0 : height / 2
 
         Behavior on radius {
           Anim {}

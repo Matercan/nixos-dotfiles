@@ -49,7 +49,6 @@ in
       wayfreeze
       swappy
 
-
       zen
       obs-studio
       equibop
@@ -61,8 +60,6 @@ in
       cursor
       ns
       pavucontrol
-      fcitx5
-      fcitx5-mozc
     ];
 
     files = {
@@ -79,14 +76,14 @@ in
       HYPRCURSOR_THEME = "catppuccin-macchiato-lavender-cursors";
       XCURSOR_THEME = "catppuccin-macchiato-lavender-cursors";
       XCURSOR_SIZE = "24";
-      XDG_CURRENT_DESKTOP="wlroots";
-      
-      QT_QPA_PLATFORM="wayland";
-      QT_QPA_PLATFORMTHEME="qt6ct";
-      QT_AUTO_SCREEN_SCALE_FACTOR=1;
-      QT_ENABLE_HIGHDPI_SCALING=1;
-      QT_WAYLAND_DISABLE_WINDOWDECORATION=1;
-      SDL_VIDEODRIVER="wayland";
+      XDG_CURRENT_DESKTOP = "wlroots";
+
+      QT_QPA_PLATFORM = "wayland";
+      QT_QPA_PLATFORMTHEME = "qt6ct";
+      QT_AUTO_SCREEN_SCALE_FACTOR = 1;
+      QT_ENABLE_HIGHDPI_SCALING = 1;
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
+      SDL_VIDEODRIVER = "wayland";
     };
 
     impure = {
@@ -101,7 +98,7 @@ in
       in
       {
         "quickshell".source = dots + "/quickshell";
-        "mango/config.conf".source = dots + "/mango/config.conf"; 
+        "mango/config.conf".source = dots + "/mango/config.conf";
       };
   };
 }

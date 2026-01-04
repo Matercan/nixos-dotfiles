@@ -21,7 +21,7 @@ let
     name = "telescope-fzf-native";
     src = inputs.telescope-fzf-native;
     doCheck = false;
-    buildPhase = /* shell */ ''make '';
+    buildPhase = /* shell */ ''make'';
     nativeBuildInputs = [
       pkgs.gnumake
       pkgs.gcc
@@ -121,7 +121,6 @@ in
           goToDeclaration = "gD";
           goToDefinition = "gd";
           goToType = "gt";
-
           listDocumentSymbols = "gs";
           listImplementations = "gi";
           listReferences = "gr";
@@ -458,8 +457,12 @@ in
                 end,
               },
               window = {
-                completion = cmp.config.window.bordered(),
-                documentation = cmp.config.window.bordered(),
+                completion = cmp.config.window.bordered({
+                  border = "single",
+                }),
+                documentation = cmp.config.window.bordered({
+                  border = "single",
+                }),
               },
               mapping = cmp.mapping.preset.insert({
                 ["<C-b>"] = cmp.mapping.scroll_docs(-4),
