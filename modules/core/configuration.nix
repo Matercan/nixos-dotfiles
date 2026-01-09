@@ -45,7 +45,19 @@ in
     };
   };
 
-  i18n.defaultLocale = "en_GB.UTF-8";
+  i18n = {
+    defaultLocale = "en_GB.UTF-8";
+    inputMethod = {
+      type = "fcitx5";
+      enable = true;
+      fcitx5.addons = with pkgs; [
+        fcitx5-mozc
+        catppuccin-fcitx5
+      ];
+    };
+
+  };
+
   console = {
     keyMap = "uk";
   };

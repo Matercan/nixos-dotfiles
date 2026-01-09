@@ -60,6 +60,9 @@ in
       cursor
       ns
       pavucontrol
+
+      chafa 
+      perf
     ];
 
     files = {
