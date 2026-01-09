@@ -5,7 +5,7 @@ import Quickshell
 import Quickshell.Wayland
 
 import qs.Data
-import qs.Generics
+import qs.Modules.Common
 
 WlrLayershell {
   id: root

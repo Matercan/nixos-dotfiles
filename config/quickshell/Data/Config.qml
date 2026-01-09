@@ -87,6 +87,12 @@ Singleton {
           property int large
         }
       }
+      property JsonObject text: JsonObject {
+        property string font
+        property int size
+      }
+
+
       property JsonObject background: JsonObject {
         property string wallSrc
         property bool wallSet

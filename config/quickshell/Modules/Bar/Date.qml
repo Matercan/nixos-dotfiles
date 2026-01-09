@@ -22,20 +22,26 @@ Rectangle {
     Text {
       anchors.verticalCenter: parent.verticalCenter
 
-      text: DateTime.day;
+      text: DateTime.time
       color: Config.colors.foreground
 
       font.family: "CaskaydiaCove NF"
       font.pixelSize: 10
     }
 
-    Rectangle {
+    Divider {}
+
+    Text {
       anchors.verticalCenter: parent.verticalCenter
 
+      text: DateTime.day
       color: Config.colors.foreground
-      height: parent.height * 0.8
-      width: 1
+
+      font.family: "CaskaydiaCove NF"
+      font.pixelSize: 10
     }
+
+    Divider {}
 
     Text {
 
@@ -47,5 +53,13 @@ Rectangle {
       font.family: "CaskaydiaCove NF"
       font.pixelSize: 10
     }
+  }
+
+  component Divider: Rectangle {
+    anchors.verticalCenter: parent.verticalCenter
+
+    color: Config.colors.foreground
+    height: parent.height * 0.8
+    width: 1
   }
 }
