@@ -4,7 +4,6 @@ import Quickshell
 
 import qs.Data
 import qs.Services
-import qs.Generics
 
 Rectangle {
   id: root

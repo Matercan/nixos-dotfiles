@@ -1,7 +1,7 @@
 {
   qt = {
     enable = true;
-    platformTheme = "wayland";
+    platformTheme = "kde";
     style = "kvantum";
   };
 }

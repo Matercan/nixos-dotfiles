@@ -24,10 +24,12 @@ PanelWindow {
   color: Config.colors.background
 
   RowLayout {
+    anchors.fill: parent
+
     Loader {
       Layout.preferredWidth: children[0].width
       Layout.preferredHeight: children[0].height
-      Layout.alignment: Qt.AlignCenter
+      Layout.alignment: Qt.AlignLeft
 
       active: true
 
@@ -39,13 +41,15 @@ PanelWindow {
     }
 
     Loader {
-      active: true
-      asynchronous: true
-
       Layout.preferredWidth: children[0].width
       Layout.preferredHeight: children[0].height
-      Layout.alignment: Qt.AlignCenter
 
+      Layout.alignment: Qt.AlignHCenter
+
+      sourceComponent: Title {
+        anchors.centerIn: parent
+        screen: root.screen
+      }
     }
   }
 }

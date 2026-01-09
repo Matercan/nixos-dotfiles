@@ -93,12 +93,10 @@ in
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-color-emoji
-    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
 
     nerd-fonts.jetbrains-mono
-    nerd-fonts.victor-mono
-    roboto
-
+    nerd-fonts.caskaydia-mono nerd-fonts.caskaydia-cove
     customFonts
   ];
 

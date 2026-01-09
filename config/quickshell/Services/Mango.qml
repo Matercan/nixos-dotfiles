@@ -8,6 +8,7 @@ Singleton {
 
   property var activeTags: []
   property var tags: [] // One for each monitor
+  property var activeWindows: []
 
   enum Mango {
     Active = 1,
@@ -85,6 +86,84 @@ Singleton {
         // Update properties to trigger changes
         root.tags = tagsCopy;
         root.activeTags = activeTagsCopy;
+      }
+    }
+  }
+
+  Process {
+    command: ["mmsg", "-w", "-c"]
+    running: true
+
+    stdout: SplitParser {
+      onRead: line => {
+
+        const titleRegex = /(.*) title (.*)/;
+        const classRegex = /(.*) appid (.*)/;
+
+        let titleMatch = titleRegex.exec(line);
+        let classMatch = classRegex.exec(line);
+
+        if (titleMatch) {
+          // It's a title line
+          const monitor = titleMatch[1];
+          const title = titleMatch[2];
+
+
+          let windowsCopy = root.activeWindows.slice();
+          let monIndex = windowsCopy.findIndex(m => m.monitor === monitor);
+
+          if (monIndex === -1) {
+            // Create new entry
+            windowsCopy.push({
+              monitor: monitor,
+              name: title,
+              tag: root.activeTags.find(t => t.mon === monitor),
+              appId: null
+            });
+          } else {
+            // Update existing entry
+            let existing = windowsCopy[monIndex];
+            windowsCopy[monIndex] = {
+              monitor: existing.monitor,
+              name: title,
+              tag: existing.tag,
+              appId: existing.appId
+            };
+          }
+
+          root.activeWindows = windowsCopy;
+        } else if (classMatch) {
+          // It's an appid line
+          const monitor = classMatch[1];
+          const appid = classMatch[2];
+
+
+          let windowsCopy = root.activeWindows.slice();
+          let monIndex = windowsCopy.findIndex(m => m.monitor === monitor);
+
+          if (monIndex === -1) {
+            // Create new entry
+            windowsCopy.push({
+              monitor: monitor,
+              appId: appid,
+              tag: root.activeTags.find(t => t.mon === monitor),
+              name: null
+            });
+          } else {
+            // Update existing entry
+            let existing = windowsCopy[monIndex];
+            windowsCopy[monIndex] = {
+              monitor: existing.monitor,
+              name: existing.name,
+              tag: existing.tag,
+              appId: appid
+            };
+          }
+
+          root.activeWindows = windowsCopy;
+        } else {
+          console.log("No match for line:", line);
+        }
       }
     }
   }
