@@ -72,6 +72,9 @@ Rectangle {
         Behavior on radius {
           Anim {}
         }
+        Behavior on implicitHeight {
+          Anim {}
+        }
         Behavior on color {
           ColorAnimation {
             duration: MaterialEasing.emphasizedTime

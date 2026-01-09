@@ -11,6 +11,7 @@ WlrLayershell {
   id: root
 
   required property var modelData
+  property var background: Config.options.background
 
   anchors {
     bottom: true
@@ -41,21 +42,21 @@ WlrLayershell {
     Component.onCompleted: {
 
       if (Config.ready) {
-        wallpaper.source = Config.options.background.wallSrc;
+        wallpaper.source = root.background.wallSrc;
       }
 
       Config.readyChanged.connect(() => {
         if (Config.ready) {
-          wallpaper.source = Config.options.background.wallSrc;
+          wallpaper.source = root.background.wallSrc;
         }
       });
 
       // Connect to wallSrc changes
-      Config.options.background.wallSrcChanged.connect(() => {
+      root.background.wallSrcChanged.connect(() => {
         if (walAnim.running) {
           walAnim.complete();
         }
-        animatingWal.source = Config.options.background.wallSrc;
+        animatingWal.source = root.background.wallSrc;
       });
 
       animatingWal.statusChanged.connect(() => {

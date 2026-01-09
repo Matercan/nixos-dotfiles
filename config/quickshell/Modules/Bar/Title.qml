@@ -12,10 +12,14 @@ Rectangle {
   implicitWidth: 500
   implicitHeight: conf.bar.width
 
-  color: Config.colors.regular0
+  color: "transparent"
 
   Text {
-    anchors.centerIn: parent
+    anchors {
+      left: parent.left
+      leftMargin: 15
+      verticalCenter: parent.verticalCenter
+    }
 
     text: {
       const window = Mango.activeWindows.find(x => x.monitor === root.screen.name);
@@ -26,9 +30,9 @@ Rectangle {
 
       return window.name;
     }
-    color: "white"
+    color: Config.colors.foreground
 
-    font.family: "CaskaydiaMono Nerd font"
+    font.family: "CaskaydiaCove NF"
     font.pixelSize: 10
   }
 }

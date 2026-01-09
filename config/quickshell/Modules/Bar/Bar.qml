@@ -25,6 +25,7 @@ PanelWindow {
 
   RowLayout {
     anchors.fill: parent
+    spacing: -1
 
     Loader {
       Layout.preferredWidth: children[0].width
@@ -44,11 +45,26 @@ PanelWindow {
       Layout.preferredWidth: children[0].width
       Layout.preferredHeight: children[0].height
 
-      Layout.alignment: Qt.AlignHCenter
+      Layout.alignment: Qt.AlignLeft
 
       sourceComponent: Title {
         anchors.centerIn: parent
         screen: root.screen
+      }
+    }
+
+    Rectangle {
+      Layout.fillWidth: true
+    }
+
+    Loader {
+      Layout.preferredWidth: children[0].width
+      Layout.preferredHeight: children[0].height
+
+      Layout.alignment: Qt.AlignRight
+
+      sourceComponent: Date {
+        anchors.centerIn: parent
       }
     }
   }
