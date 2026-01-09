@@ -248,7 +248,6 @@ in
               "italic"
               "bold"
             ];
-            styles.operators = [ "italic" ];
 
             integrations = {
               gitsigns = true;

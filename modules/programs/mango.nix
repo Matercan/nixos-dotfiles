@@ -6,8 +6,6 @@ let
     bordercolor = ${colors.border + "ff"}
     focuscolor = ${colors.accent + "ff"}
     maximizescreencolor = ${colors.accent + "ff"}
-
-    exec = foot
   '';
 in
 {

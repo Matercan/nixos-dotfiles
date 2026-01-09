@@ -61,9 +61,8 @@ in
       zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
       export FZF_DEFAULT_COMMAND="rg --files --follow --hidden --glob '!.git'"
-      export FZF_DEFAULT_OPTS='--highlight-line --info=inline-right --ansi --layout=reverse --border=none'
-      export FZF_CTRL_T_OPTS="--preview='bat {}' --height=100% --bind shift-up:preview-page-up,shift-down:preview-page-down"
-
+      export FZF_DEFAULT_OPTS="--highlight-line --info=inline-right --ansi --layout=reverse --border=none --bind shift-up:preview-page-up,shift-down:preview-page-down"
+      export FZF_CTRL_T_OPTS="--height=100% --preview='bat --color=always {}'"      
       autoload -Uz compinit && compinit
 
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -77,8 +76,8 @@ in
       "zsh-nix-completions".source = "${pkgs.nix-zsh-completions}/share/zsh/site-functions";
       "zsh-completions".source = "${pkgs.zsh-completions}/share/zsh/site-functions";
 
-      "zsh-autocomplete".source =
-        "${pkgs.zsh-autocomplete}/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh";
+      "zsh-autosuggestions".source =
+        "${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh";
       "zsh-syntax-highlighting".source =
         "${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
       "zsh-powerlevel10k".source =

@@ -10,9 +10,8 @@ Singleton {
 
   property alias options: configOptionsJsonAdapter
   property alias colors: colorsOptionsAdapter
-  property bool ready: false
-  property int readWriteDelay: 50 // miliseconds
   property bool blockWrites: false
+  property bool ready: true
   property string dirPath: Quickshell.env("HOME") + "/.config/quickshell/Data/"
 
   function setNestedValue(nestedKey: string, value) {
@@ -87,9 +86,10 @@ Singleton {
           property int large
         }
       }
+
       property JsonObject text: JsonObject {
-        property string font
-        property int size
+        property string font: "Caskaydia Cove NF"
+        property int size: 10
       }
 
 

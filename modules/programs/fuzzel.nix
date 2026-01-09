@@ -1,45 +1,51 @@
-{ config, ... }:
+{ config, ...}:
 
 let
   colors = config.colors;
 in
 {
-
-  hjem.users.matercan.rum.programs.fuzzel = {
+  hjem.users.matercan.rum.programs.ghostty = {
     enable = true;
 
     settings = {
-      border.radius = 10;
-      border.width = 4;
-      dmenu.exit-immediate-if-empty = "yes";
-
-      main = {
-        font = "Fira Code:size=9";
-        placeholder = ">w<";
-        prompt = "❯ ";
-        inner-pad = 10;
-        tabs = 2;
-        lines = 10;
-        dpi-aware = "yes";
-        icons-enabled = false;
-        horizontal-pad = 14;
-        width = 60;
-        image-size-ratio = 1;
-        terminal = "foot";
-      };
-
-      colors = {
-        background = colors.background + "ff";
-        text = colors.text + "ff";
-        border = colors.border + "ff";
-        prompt = colors.regular6 + "ff";
-        input = colors.regular6 + "ff";
-
-        selection = colors.secondary + "88";
-        selected-text = colors.secondary_text + "ff";
-        selection_match = colors.regular6 + "88";
-        counter = colors.regular6 + "ff";
-      };
+      # Shell configuration
+      command = "/etc/profiles/per-user/matercan/bin/zsh";
+      
+      # Font configuration
+      font-family = "JetBrainsMono Nerd Font Mono";
+      font-size = 9;
+      font-style-italic = "Operator Mono";
+      
+      # Background opacity
+      background-opacity = 0.8;
+      
+      # Disable bell
+      shell-integration-features = "no-cursor,no-sudo,no-title";
+      
+      # Colors
+      background = colors.background;
+      foreground = colors.text;
+      selection-background = colors.selection_background;
+      
+      # Palette colors (0-15)
+      palette = [
+        "0=${colors.regular0}"
+        "1=${colors.regular1}"
+        "2=${colors.regular2}"
+        "3=${colors.regular3}"
+        "4=${colors.regular4}"
+        "5=${colors.regular5}"
+        "6=${colors.regular6}"
+        "7=${colors.regular7}"
+        "8=${colors.bright0}"
+        "9=${colors.bright1}"
+        "10=${colors.bright2}"
+        "11=${colors.bright3}"
+        "12=${colors.bright4}"
+        "13=${colors.bright5}"
+        "14=${colors.bright6}"
+        "15=${colors.bright7}"
+      ];
     };
   };
 }

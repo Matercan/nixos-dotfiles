@@ -1,5 +1,6 @@
 import QtQuick
 import qs.Services
+import qs.Modules.Generics
 import qs.Data
 
 Rectangle {

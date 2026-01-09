@@ -20,14 +20,10 @@ WlrLayershell {
     left: true
   }
 
-  margins {
-    left: -20
-  }
-
   color: "transparent"
   exclusionMode: ExclusionMode.Ignore
   focusable: false
-  implicitHeight: 28
+  implicitHeight: 1
   layer: WlrLayer.Bottom
   namespace: "Quickshell:background"
   screen: modelData
