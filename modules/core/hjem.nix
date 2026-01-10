@@ -42,6 +42,7 @@ in
       ripgrep
       fzf
       zoxide
+      bat
 
       wl-clipboard
       grim

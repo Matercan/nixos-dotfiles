@@ -1,6 +1,6 @@
 import QtQuick
 import qs.Services
-import qs.Modules.Generics
+import qs.Modules.Common
 import qs.Data
 
 Rectangle {
@@ -20,39 +20,23 @@ Rectangle {
       verticalCenter: parent.verticalCenter
     }
 
-    Text {
+    StyledText {
       anchors.verticalCenter: parent.verticalCenter
-
       text: DateTime.time
-      color: Config.colors.foreground
-
-      font.family: "CaskaydiaCove NF"
-      font.pixelSize: 10
     }
 
     Divider {}
 
-    Text {
+    StyledText {
       anchors.verticalCenter: parent.verticalCenter
-
       text: DateTime.day
-      color: Config.colors.foreground
-
-      font.family: "CaskaydiaCove NF"
-      font.pixelSize: 10
     }
 
     Divider {}
 
-    Text {
-
+    StyledText {
       anchors.verticalCenter: parent.verticalCenter
-
       text: DateTime.dmy
-      color: Config.colors.foreground
-
-      font.family: "CaskaydiaCove NF"
-      font.pixelSize: 10
     }
   }
 

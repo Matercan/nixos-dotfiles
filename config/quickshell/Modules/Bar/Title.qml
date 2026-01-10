@@ -2,6 +2,7 @@ import QtQuick
 
 import qs.Services
 import qs.Data
+import qs.Modules.Common
 
 Rectangle {
   id: root
@@ -14,7 +15,7 @@ Rectangle {
 
   color: "transparent"
 
-  Text {
+  StyledText {
     anchors {
       left: parent.left
       leftMargin: 15
@@ -30,9 +31,5 @@ Rectangle {
 
       return window.name;
     }
-    color: Config.colors.foreground
-
-    font.family: "CaskaydiaCove NF"
-    font.pixelSize: 10
   }
 }
