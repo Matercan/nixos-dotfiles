@@ -100,9 +100,9 @@ in
       {
         "quickshell".source = dots + "/quickshell";
         "mango/config.conf".source = dots + "/mango/config.conf";
-        ".config/equibop/themes".source = dots + "/config/equibop/themes";
-        ".config/equibop/settings".source = dots + "/config/equibop/settings";
-      ".config/fastfetch".source = dots + "config/fastfetch";
+        ".config/equibop/themes".source = dots + "/equibop/themes";
+        ".config/equibop/settings".source = dots + "/equibop/settings";
+        ".config/fastfetch".source = dots + "/fastfetch";
       };
   };
 }
