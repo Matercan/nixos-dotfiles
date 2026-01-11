@@ -19,13 +19,13 @@ PanelWindow {
     right: true
   }
 
-  implicitHeight: root.config.bar.width
+  implicitHeight: config.bar.width
 
   color: Config.colors.background
 
   RowLayout {
     anchors.fill: parent
-    spacing: -1
+    spacing: 6
 
     Loader {
       Layout.preferredWidth: children[0].width
@@ -55,6 +55,15 @@ PanelWindow {
 
     Rectangle {
       Layout.fillWidth: true
+    }
+
+    Loader {
+      Layout.preferredWidth: children[0].width
+      Layout.preferredHeight: children[0].height
+
+      sourceComponent: Tray {
+        anchors.centerIn: parent
+      }
     }
 
     Loader {

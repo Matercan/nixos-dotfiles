@@ -35,7 +35,7 @@ Rectangle {
         const open = monitor.filter(t => t.numWindows > 0);
         const lastWindow = open[open.length - 1];
         if (!open || !lastWindow) {
-          model.values = [];
+          model.values = [1];
           return;
         }
 

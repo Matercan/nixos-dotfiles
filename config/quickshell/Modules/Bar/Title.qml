@@ -10,12 +10,14 @@ Rectangle {
   property var conf: Config.options.appearance
   required property var screen
 
-  implicitWidth: 500
+  implicitWidth: text.width
   implicitHeight: conf.bar.width
 
   color: "transparent"
 
   StyledText {
+    id: text
+
     anchors {
       left: parent.left
       leftMargin: 15
@@ -27,6 +29,10 @@ Rectangle {
 
       if (!window) {
         return "";
+      }
+
+      if (window.name.length === 0) {
+        return "Desktop"; 
       }
 
       return window.name;

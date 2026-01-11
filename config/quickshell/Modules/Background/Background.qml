@@ -36,7 +36,6 @@ WlrLayershell {
     source: ""
 
     Component.onCompleted: {
-
       if (Config.ready) {
         wallpaper.source = root.background.wallSrc;
       }

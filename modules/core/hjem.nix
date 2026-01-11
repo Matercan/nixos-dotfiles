@@ -62,15 +62,12 @@ in
       ns
       pavucontrol
 
-      chafa 
+      chafa
       perf
     ];
 
     files = {
-      ".config/equibop/themes".source = ../../config/equibop/themes;
-      ".config/equibop/settings".source = ../../config/equibop/settings;
       ".config/Kvantum".source = ../../config/Kvantum;
-      ".config/fastfetch".source = ../../config/fastfetch;
       ".config/assets".source = ../../config/assets;
     };
 
@@ -103,6 +100,9 @@ in
       {
         "quickshell".source = dots + "/quickshell";
         "mango/config.conf".source = dots + "/mango/config.conf";
+        ".config/equibop/themes".source = dots + "/config/equibop/themes";
+        ".config/equibop/settings".source = dots + "/config/equibop/settings";
+      ".config/fastfetch".source = dots + "config/fastfetch";
       };
   };
 }
