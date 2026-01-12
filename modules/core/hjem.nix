@@ -56,6 +56,7 @@ in
       protonvpn-gui
       prismlauncher
       qs
+      libsForQt5.qt5.qtgraphicaleffects
 
       gtk-theme
       cursor

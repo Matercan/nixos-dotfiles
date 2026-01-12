@@ -6,5 +6,5 @@ PopupWindow {
   id: root
   required property QsMenuHandle trayItemMenuHandle
 
-  signal MenuClosed 
+  signal menuClosed 
 }
