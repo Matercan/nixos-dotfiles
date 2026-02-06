@@ -94,6 +94,7 @@ in
 
     nerd-fonts.jetbrains-mono
     nerd-fonts.caskaydia-mono nerd-fonts.caskaydia-cove
+    caveat
     customFonts
   ];
 

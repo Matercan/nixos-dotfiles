@@ -102,6 +102,7 @@ in
           lua
           bash
           json
+          python
         ];
 
         highlight.enable = true;
@@ -209,6 +210,7 @@ in
         csharp.enable = true;
         json.enable = true;
         qml.enable = true;
+        python.enable = true;
       };
 
       vim.keymaps = [
