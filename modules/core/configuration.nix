@@ -34,6 +34,7 @@ in
 
   networking.hostName = "mangowc-btw";
   networking.networkmanager.enable = true;
+  networking.nameservers = [ "8.8..8" "1.1.1.1" ];
 
   time.timeZone = "Europe/Amsterdam";
 

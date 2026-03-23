@@ -65,6 +65,11 @@ in
 
       chafa
       perf
+      piper
+
+      wine64
+      winetricks
+      gnome-software
     ];
 
     files = {
@@ -79,6 +84,8 @@ in
       XCURSOR_THEME = "catppuccin-macchiato-lavender-cursors";
       XCURSOR_SIZE = "24";
       XDG_CURRENT_DESKTOP = "wlroots";
+      BROWSER = "zen";
+      DEFAULT_BROWSER = "zen";
 
       SDL_VIDEODRIVER = "wayland";
     };

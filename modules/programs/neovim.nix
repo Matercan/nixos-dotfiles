@@ -21,11 +21,17 @@ let
     name = "telescope-fzf-native";
     src = inputs.telescope-fzf-native;
     doCheck = false;
-    buildPhase = /* shell */ ''make'';
+    buildPhase = /* shell */ "make";
     nativeBuildInputs = [
       pkgs.gnumake
       pkgs.gcc
     ];
+  };
+
+  slimv-from-source = pkgs.vimUtils.buildVimPlugin {
+    name = "slimv-native";
+    src = inputs.slimv;
+    doCheck = false;
   };
 
   dependsPlugin = {
@@ -388,6 +394,12 @@ in
           package = plug.nvim-surround;
           setupModule = "nvim-surround";
         };
+
+        /*
+          "vimplugin-slimv-native" = {
+            package = slimv-from-source;
+          };
+        */
 
         "mini.pairs" = {
           package = plug.mini-pairs;
