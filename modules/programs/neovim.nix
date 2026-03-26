@@ -375,11 +375,6 @@ in
         "gitsigns.nvim".package = plug.gitsigns-nvim;
         "vim-wakatime".package = plug.vim-wakatime;
 
-        "luasnip" = {
-          package = plug.luasnip;
-          priority = 1000;
-        };
-
         "indent-blankline.nvim" = {
           package = plug.indent-blankline-nvim;
           setupModule = "ibl";

@@ -53,7 +53,7 @@ in
       zen
       obs-studio
       equibop
-      protonvpn-gui
+      proton-vpn 
       prismlauncher
       qs
       libsForQt5.qt5.qtgraphicaleffects
