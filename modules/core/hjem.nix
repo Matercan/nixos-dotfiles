@@ -83,7 +83,6 @@ in
       HYPRCURSOR_THEME = "catppuccin-macchiato-lavender-cursors";
       XCURSOR_THEME = "catppuccin-macchiato-lavender-cursors";
       XCURSOR_SIZE = "24";
-      XDG_CURRENT_DESKTOP = "wlroots";
       BROWSER = "zen";
       DEFAULT_BROWSER = "zen";
 

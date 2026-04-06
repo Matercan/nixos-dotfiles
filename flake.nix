@@ -89,9 +89,6 @@
     telescope-fzf-native.url = "github:nvim-telescope/telescope-fzf-native.nvim";
     telescope-fzf-native.flake = false;
 
-    slimv.url = "github:kovisoft/slimv";
-    slimv.flake = false;
-
   };
 
 }

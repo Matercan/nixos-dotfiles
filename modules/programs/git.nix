@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   users.users.git = {
@@ -19,7 +19,7 @@
 
     config = {
       user = {
-        name = "lieke";
+        name = "liliane";
         email = "matercan@proton.me";
       };
 

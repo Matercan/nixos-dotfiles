@@ -28,12 +28,6 @@ let
     ];
   };
 
-  slimv-from-source = pkgs.vimUtils.buildVimPlugin {
-    name = "slimv-native";
-    src = inputs.slimv;
-    doCheck = false;
-  };
-
   dependsPlugin = {
     lazy = false;
     priority = 1001;
@@ -109,6 +103,8 @@ in
           bash
           json
           python
+          javascript
+          typescript
         ];
 
         highlight.enable = true;
@@ -217,6 +213,7 @@ in
         json.enable = true;
         qml.enable = true;
         python.enable = true;
+        ts.enable = true;
       };
 
       vim.keymaps = [

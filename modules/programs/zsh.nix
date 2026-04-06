@@ -13,7 +13,7 @@ in
     initConfig = /* shell */ ''
 
       if [[ -z "$WAYLAND_DISPLAY" ]] && [[ "$XDG_VTNR" == 1 ]]; then
-         exec mango
+         exec uwsm start -S mango-uwsm.desktop 
       fi
 
       bindkey -e
