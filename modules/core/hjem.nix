@@ -86,6 +86,7 @@ in
       BROWSER = "zen";
       DEFAULT_BROWSER = "zen";
 
+      XDG_CURRENT_DESKTOP = "wlroots";
       SDL_VIDEODRIVER = "wayland";
     };
 
@@ -101,7 +102,7 @@ in
       in
       {
         "quickshell".source = dots + "/quickshell";
-        "mango/config.conf".source = dots + "/mango/config.conf";
+        "mango/".source = dots + "/mango";
         ".config/equibop/themes".source = dots + "/equibop/themes";
         ".config/equibop/settings".source = dots + "/equibop/settings";
         ".config/fastfetch".source = dots + "/fastfetch";
