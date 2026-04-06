@@ -102,7 +102,8 @@ in
       in
       {
         "quickshell".source = dots + "/quickshell";
-        "mango/".source = dots + "/mango";
+        "mango/config.conf".source = dots + "/mango/config.conf";
+        "mango/autostart.sh".source = dots + "/mango/autostart.sh";
         ".config/equibop/themes".source = dots + "/equibop/themes";
         ".config/equibop/settings".source = dots + "/equibop/settings";
         ".config/fastfetch".source = dots + "/fastfetch";
